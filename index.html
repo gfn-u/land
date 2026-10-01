@@ -23,8 +23,11 @@ main{min-height:100svh;width:min(1180px,calc(100% - 48px));margin:auto;display:f
   margin-bottom:48px;
   align-self:flex-end;
 }
+.participate {
+  align-self: flex-end;
+}
 h1{max-width:1080px;margin:0;font-size:clamp(3.5rem,8.5vw,8.6rem);line-height:.91;letter-spacing:-.065em;font-weight:400;text-wrap:balance}
-p{margin:56px 0 0 auto;width:min(520px,100%);color:var(--muted);font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.5}
+p{margin:56px 0 0 0;width:min(520px,100%);color:var(--muted);font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.5}
 @media(max-width:700px){main{width:calc(100% - 32px)}h1{font-size:clamp(3.1rem,15vw,5.4rem);line-height:.93}p{margin:42px 0 0}}
 </style>
 </head>
@@ -37,7 +40,12 @@ p{margin:56px 0 0 auto;width:min(520px,100%);color:var(--muted);font-size:clamp(
   >
 <h1>Creating conditions where something good is the most likely outcome.</h1>
 <p>The Good for Nothing Universe is at your service.</p>
-<a href="participate.html">Participate →</a>
+<a 
+  class="participate" 
+  href="participate.html"
+>
+  Participate →
+</a>
 </main>
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
