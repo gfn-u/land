@@ -4,8 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Participate — Good for Nothing</title>
+    <style>
+:root{
+  --x:50%;
+  --y:45%;
+  --ink:#f4f1e8;
+  --muted:rgba(244,241,232,.62)
+}
+  .cosmos{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    overflow:hidden;
+    background:radial-gradient(circle at var(--x) var(--y),rgba(105,93,154,.20),rgba(49,64,109,.09) 20%,transparent 46%),radial-gradient(circle at 84% 18%,rgba(169,122,93,.07),transparent 28%),linear-gradient(160deg,#090b12,#05060a 48%,#080810)}
+ .star{
+   position:absolute;
+   border-radius:50%;
+   background:white;
+   pointer-events:none;
+}
+  </style>
 </head>
 <body>
+  <div class="cosmos" aria-hidden="true"></div>
+  
   <h1>Participate</h1>
 </body>
 </html>
