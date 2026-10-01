@@ -10,10 +10,12 @@
 *{box-sizing:border-box}
 body{margin:0;background:#05060a;color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow:hidden}
 .cosmos{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(circle at var(--x) var(--y),rgba(105,93,154,.20),rgba(49,64,109,.09) 20%,transparent 46%),radial-gradient(circle at 84% 18%,rgba(169,122,93,.07),transparent 28%),linear-gradient(160deg,#090b12,#05060a 48%,#080810)}
-.cosmos:before,.cosmos:after{content:"";position:absolute;inset:-20%;background-repeat:repeat;pointer-events:none}
-.cosmos:before{opacity:.68;background-image:radial-gradient(circle,rgba(255,255,255,.85) 0 1px,transparent 1.3px),radial-gradient(circle,rgba(255,255,255,.5) 0 .7px,transparent 1px);background-size:137px 137px,83px 83px;background-position:13px 27px,49px 11px;animation:drift 70s linear infinite}
-.cosmos:after{opacity:.28;background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 1px,transparent 1.4px);background-size:211px 211px;background-position:91px 63px;animation:drift 110s linear infinite reverse}
-@keyframes drift{to{transform:translate3d(3%,2%,0)}}
+.star{
+  position:absolute;
+  border-radius:50%;
+  background:white;
+  pointer-events:none;
+}
 main{min-height:100svh;width:min(1180px,calc(100% - 48px));margin:auto;display:flex;flex-direction:column;justify-content:center;padding:8vh 0}
 .logo{
   width:120px;
@@ -42,6 +44,20 @@ const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
 addEventListener("pointermove",e=>{tx=e.clientX/innerWidth*100;ty=e.clientY/innerHeight*100},{passive:true});
 function breathe(){x+=(tx-x)*.025;y+=(ty-y)*.025;root.style.setProperty("--x",x+"%");root.style.setProperty("--y",y+"%");requestAnimationFrame(breathe)}
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches)breathe();
+const cosmos=document.querySelector(".cosmos");
+for(let i=0;i<140;i++){
+  const star=document.createElement("span");
+  star.className="star";
+  const size=Math.random() < .9
+    ? Math.random() * 1.2 + .3
+    : Math.random() * 1.8 + 1.2;
+  star.style.width=size+"px";
+  star.style.height=size+"px";
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.opacity=Math.random()*.65+.15;
+  cosmos.appendChild(star);
+}
 </script>
 </body>
 </html>
