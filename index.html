@@ -15,6 +15,11 @@ body{margin:0;background:#05060a;color:var(--ink);font-family:Arial,Helvetica,sa
 .cosmos:after{opacity:.28;background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 1px,transparent 1.4px);background-size:211px 211px;background-position:91px 63px;animation:drift 110s linear infinite reverse}
 @keyframes drift{to{transform:translate3d(3%,2%,0)}}
 main{min-height:100svh;width:min(1180px,calc(100% - 48px));margin:auto;display:flex;flex-direction:column;justify-content:center;padding:8vh 0}
+.logo{
+  width:120px;
+  height:auto;
+  margin-bottom:48px;
+}
 h1{max-width:1080px;margin:0;font-size:clamp(3.5rem,8.5vw,8.6rem);line-height:.91;letter-spacing:-.065em;font-weight:400;text-wrap:balance}
 p{margin:56px 0 0 auto;width:min(520px,100%);color:var(--muted);font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.5}
 @media(max-width:700px){main{width:calc(100% - 32px)}h1{font-size:clamp(3.1rem,15vw,5.4rem);line-height:.93}p{margin:42px 0 0}}
@@ -24,6 +29,10 @@ p{margin:56px 0 0 auto;width:min(520px,100%);color:var(--muted);font-size:clamp(
 <body>
 <div class="cosmos" aria-hidden="true"></div>
 <main>
+<img class="logo" 
+  src="assets/logo/gfnu-logo-white.png" 
+  alt="Good for Nothing Universe"
+  >
 <h1>Creating conditions where something good is the most likely outcome.</h1>
 <p>The Good for Nothing Universe is at your service.</p>
 </main>
