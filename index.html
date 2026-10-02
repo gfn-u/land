@@ -52,12 +52,31 @@ main{
 .ground h2 {
   margin: 0;
   max-width: 760px;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(2.8rem, 5vw, 5.4rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: .98;
   letter-spacing: -.035em;
   text-wrap: balance;
+}
+.ground-intro {
+  margin: 64px 0 0;
+  max-width: 560px;
+  color: #05060a;
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.55;
+}
+.ground-body {
+  margin-top: 120px;
+  max-width: 680px;
+}
+.ground-body p {
+  margin: 0 0 48px;
+  color: #05060a;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.65;
 }
 .logo{
   width:120px;
@@ -100,8 +119,17 @@ h1{
   font-weight:400;
   text-wrap:balance
 }
-p{margin:56px 0 0 0;width:min(520px,100%);color:var(--muted);font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.5}
-@media(max-width:700px){main{width:calc(100% - 32px)}h1{font-size:clamp(3.1rem,15vw,5.4rem);line-height:.93}p{margin:42px 0 0}}
+main p{
+  margin:56px 0 0 0;
+  width:min(520px,100%);
+  color:var(--muted);
+  font-size:clamp(1rem,1.5vw,1.25rem);
+  line-height:1.5
+}
+@media(max-width:700px){
+  main{width:calc(100% - 32px)}
+  h1{font-size:clamp(3.1rem,15vw,5.4rem);line-height:.93}
+  main p{margin:42px 0 0}}
 </style>
 </head>
 <body>
@@ -122,6 +150,18 @@ p{margin:56px 0 0 0;width:min(520px,100%);color:var(--muted);font-size:clamp(1re
 </main>
   <section class="ground">
   <h2>The Good for Nothing Universe begins with very little.</h2>
+    <p class="ground-intro">  It is an evolving infrastructure for making things possible without deciding in advance what they must become.</p>
+<div class="ground-body">
+  <p>
+    Structure is introduced where needed. What does not need to be determined remains open. Whether a discussion, program, product or production, each undertaking creates conditions in which those who participate are free to be Good for Nothing - because when we understand and attend to the infrastructure of our good will, we can trust one another to be good.
+  </p>
+  <p>
+    The Good for Nothing Universe begins with humans willing to consider that what is needed may already be available. The question is not what is missing, but what matters: What conditions need to be created? What resources are already present? What becomes possible from here?
+  </p>
+  <p>
+    And if what is needed is already there, we will say so. Not every situation needs our participation. Sometimes the most useful contribution is recognizing that nothing needs to be added.
+  </p>
+</div>
 </section>
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
