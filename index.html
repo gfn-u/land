@@ -53,7 +53,7 @@ main{
   margin: 0;
   max-width: 760px;
   font-family: var(--font-body);
-  font-size: clamp(2.8rem, 5vw, 5.4rem);
+  font-size: clamp(2.8rem, 3vw, 4rem);
   font-weight: 500;
   line-height: .98;
   letter-spacing: -.035em;
@@ -68,15 +68,21 @@ main{
   line-height: 1.55;
 }
 .ground-body {
-  margin-top: 120px;
-  max-width: 680px;
+  margin-top: 96px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .ground-body p {
-  margin: 0 0 48px;
+  width: min(560px, 100%);
+  margin: 0 0 28px;
   color: #05060a;
   font-family: var(--font-body);
   font-size: 1.1rem;
   line-height: 1.65;
+}
+.ground-body p:nth-child(2) {
+  align-self: flex-end;
 }
 .logo{
   width:120px;
