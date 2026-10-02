@@ -22,6 +22,16 @@ main{min-height:100svh;width:min(1180px,calc(100% - 48px));margin:auto;display:f
   height:auto;
   margin-bottom:48px;
   align-self:flex-end;
+  animation: float 7s ease-in-out infinite;
+  }
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+
 }
 .participate {
   align-self: flex-end;
