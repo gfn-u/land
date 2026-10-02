@@ -154,12 +154,16 @@ main{
   font-size: 1.1rem;
   line-height: 1.65;
 }
-.ground-body p:nth-child(1)::before {
+.ground-body {
+  position: relative;
+}
+.ground-body::before {
   content: "";
-  display: block;
+  position: absolute;
+  left: 18%;
+  top: -48px;
   width: 1px;
- height: 180px;
-  margin-bottom: 24px;
+  height: 620px;
   background: rgba(79, 143, 138, .38);
 }
   .ground-body p:nth-child(1) {
