@@ -48,13 +48,21 @@ main{
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    transparent 35%,
-    var(--ink) 100%
+    rgba(244, 241, 232, .03) 25%,
+    rgba(244, 241, 232, .12) 50%,
+    rgba(244, 241, 232, .35) 75%,
+    rgba(244, 241, 232, .55) 100%
   );
 } 
 .ground {
   min-height: 100svh;
-  background: var(--ink);
+  background: linear-gradient(
+  to bottom,
+  rgba(244, 241, 232, .55) 0%,
+  rgba(244, 241, 232, .72) 25%,
+  rgba(244, 241, 232, .9) 55%,
+  var(--ink) 85%
+);
   color: #05060a;
   padding: 12vh max(24px, calc((100% - 1180px) / 2));
 }
