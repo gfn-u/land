@@ -44,6 +44,13 @@
    color: #05060a;
    border-radius: 12px;
    line-height: 1.5;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity 1.5s ease;
+}
+.letter.open {
+   opacity: 1;
+   visibility: visible;
 }
  body {
   margin: 0;
@@ -92,6 +99,10 @@
   <script>
  const cosmos = document.querySelector(".cosmos");
  const imHere = document.querySelector(".im-here");
+ const letter = document.querySelector(".letter");
+    imHere.addEventListener("click", () => {
+  letter.classList.add("open");
+});
  const star = document.createElement("span");
  star.className = "star";
       const size = Math.random() * 3 + 2;
