@@ -36,6 +36,15 @@
 .im-here:hover {
   color: var(--ink);
 }
+ .letter {
+   width: min(560px, calc(100% - 48px));
+   margin: 120px auto;
+   padding: 40px;
+   background: var(--ink);
+   color: #05060a;
+   border-radius: 12px;
+   line-height: 1.5;
+}
  body {
   margin: 0;
   background: #05060a;
@@ -49,6 +58,37 @@
 <button class="im-here">
   I'm here
 </button>
+<div class="letter">
+  <p>
+    Relevant information will be shared by GfN using the interweb,
+    for we lack sufficient numbers of carrier pigeons in today's world
+    and the distance between us has grown far too wide.
+  </p>
+  <p>
+    For now, we need an email address to contact you and invite you in.
+  </p>
+  <p>
+    This is not some managed newsletter. It is a list of email addresses
+    and names in our mailbox, so that at least digitally, we know where
+    to find one another. You may receive invitations, letters, small
+    artifacts of creative process or any number of things; we promise
+    to practice restraint in what is offered.
+  </p>
+  <p>
+    You are giving your email to a person. It is being stored in a small
+    server they made of their phone. Please understand that it is sometimes not available. 
+  </p>
+  <p>
+    Welcome to our creative process. Let us know where to find you:
+  </p>
+  <p>
+    — GFN<br>
+    Head MacGyver at GfNU
+  </p>
+  <p>
+    Please be patient with us while we await ignition (aka, we are still building the cell phone server).
+  </p>
+</div>
   <script>
  const cosmos = document.querySelector(".cosmos");
  const imHere = document.querySelector(".im-here");
