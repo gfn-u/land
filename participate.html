@@ -55,6 +55,23 @@
   star.style.top=Math.random()*100+"%";
   star.style.opacity=Math.random()*.65+.15;
   cosmos.appendChild(star);
+const root = document.documentElement;
+let tx = 50;
+let ty = 45;
+let x = 50;
+let y = 45;
+addEventListener("pointermove", e => {
+  tx = e.clientX / innerWidth * 100;
+  ty = e.clientY / innerHeight * 100;
+});
+function breathe() {
+  x += (tx - x) * .025;
+  y += (ty - y) * .025;
+  root.style.setProperty("--x", x + "%");
+  root.style.setProperty("--y", y + "%");
+  requestAnimationFrame(breathe);
+}
+breathe();
   </script>
 </body>
 </html>
