@@ -4,12 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Participate — Good for Nothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
     <style>
 :root{
   --x:50%;
   --y:45%;
   --ink:#f4f1e8;
-  --muted:rgba(244,241,232,.62)
+  --muted:rgba(244,241,232,.62);
+  --radius:12px;
+  --font-display: "EB Garamond", serif;
+  --font-body: "Source Sans 3", sans-serif;
+  --font-ui: "Inter", sans-serif;
+  --font-correspondence: "IBM Plex Mono", monospace;
 }
   .cosmos{
     position:fixed;
@@ -28,7 +36,7 @@
    background: none;
    border: none;
    color: var(--muted);
-   font: inherit;
+   font-family: var(--font-ui);
    cursor: pointer;
    transition: color 1.5s ease;
    transform: translate(8px, -50%);
@@ -42,12 +50,12 @@
    padding: 40px;
    background: var(--ink);
    color: #05060a;
-   border-radius: 12px;
+   border-radius: var(--radius);
    line-height: 1.5;
    opacity: 0;
    visibility: hidden;
    transition: opacity 1.5s ease;
-   font-family: monospace;
+   font-family: font-family: var(--font-correspondence);
 }
 .letter.open {
    opacity: 1;
@@ -68,7 +76,7 @@
   margin: 0;
   background: #05060a;
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
 }
   </style>
 </head>
