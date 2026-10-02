@@ -14,6 +14,11 @@
   --y:45%;
   --ink:#f4f1e8;
   --muted:rgba(244,241,232,.62);
+  --open-sky: #8FB8C7;
+  --weathered-teal: #4F8F8A;
+  --lichen: #84966B;
+  --terracotta: #B66F52;
+  --pink-salt: #D0A19A;
   --font-display: "EB Garamond", serif;
   --font-body: "Source Sans 3", sans-serif;
   --font-ui: "Inter", sans-serif;
@@ -47,6 +52,11 @@ main{
   height: 70vh;
   background:
     radial-gradient(
+      circle at var(--x) var(--y),
+      color-mix(in srgb, var(--transition-color) 18%, transparent),
+      transparent 32%
+    ),
+    radial-gradient(
       ellipse 105% 145% at 50% -10%,
       transparent 0%,
       transparent 48%,
@@ -61,11 +71,16 @@ main{
   color: #05060a;
   padding: 12vh max(24px, calc((100% - 1400px) / 2));
   background:
-    radial-gradient(
-      circle at var(--x) var(--y),
-      rgba(181, 124, 82, .12),
-      transparent 38%
-    ),
+  radial-gradient(
+    circle at var(--x) var(--y),
+    color-mix(in srgb, var(--transition-color) 14%, transparent),
+    transparent 32%
+  ),
+  radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(181, 124, 82, .12),
+    transparent 38%
+  ),
     linear-gradient(
   to bottom,
   rgba(244, 241, 232, .55) 0%,
@@ -205,6 +220,16 @@ main p{
 </section>
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
+  const transitionColors = [
+  "#8FB8C7", // open sky
+  "#4F8F8A", // weathered teal
+  "#84966B", // lichen
+  "#B66F52", // terracotta
+  "#D0A19A"  // pink salt
+];
+const transitionColor =
+  transitionColors[Math.floor(Math.random() * transitionColors.length)];
+root.style.setProperty("--transition-color", transitionColor);
 addEventListener("pointermove",e=>{tx=e.clientX/innerWidth*100;ty=e.clientY/innerHeight*100},{passive:true});
 function breathe(){x+=(tx-x)*.025;y+=(ty-y)*.025;root.style.setProperty("--x",x+"%");root.style.setProperty("--y",y+"%");requestAnimationFrame(breathe)}
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches)breathe();
