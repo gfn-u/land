@@ -46,7 +46,7 @@ main{
 .descent {
   height: 70vh;
   background:
-    /* 2. DISPLACEMENT — the inverse horizon */
+    /* ECLIPSE — geometry + final handoff */
     radial-gradient(
       ellipse 115% 105% at 50% 15%,
       transparent 0%,
@@ -54,19 +54,18 @@ main{
       rgba(244, 241, 232, .06) 58%,
       rgba(244, 241, 232, .18) 70%,
       rgba(244, 241, 232, .38) 82%,
-      rgba(244, 241, 232, .55) 94%
+      rgba(244, 241, 232, .55) 100%
     ),
-    /* 1. ILLUMINATION — light appears before it displaces */
+    /* EARLY LIGHT — present at the top, gone before Ground */
     linear-gradient(
       to bottom,
       transparent 0%,
       rgba(244, 241, 232, .015) 12%,
       rgba(244, 241, 232, .03) 28%,
-      rgba(244, 241, 232, .08) 45%,
-      rgba(244, 241, 232, .20) 65%,
-      rgba(244, 241, 232, .40) 82%,
-      rgba(244, 241, 232, .55) 94%,
-      rgba(244, 241, 232, .55) 100%
+      rgba(244, 241, 232, .06) 45%,
+      rgba(244, 241, 232, .03) 62%,
+      transparent 78%,
+      transparent 100%
     );
 }
 .ground {
