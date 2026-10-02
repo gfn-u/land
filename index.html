@@ -26,7 +26,6 @@ body{
   background:#05060a;
   color:var(--ink);
   font-family:var(--font-body);
-  overflow:hidden
 }
 .cosmos{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(circle at var(--x) var(--y),rgba(105,93,154,.20),rgba(49,64,109,.09) 20%,transparent 46%),radial-gradient(circle at 84% 18%,rgba(169,122,93,.07),transparent 28%),linear-gradient(160deg,#090b12,#05060a 48%,#080810)}
 .star{
@@ -35,7 +34,31 @@ body{
   background:white;
   pointer-events:none;
 }
-main{min-height:100svh;width:min(1180px,calc(100% - 48px));margin:auto;display:flex;flex-direction:column;justify-content:center;padding:8vh 0}
+main{
+  min-height:100svh;
+  width:min(1180px,calc(100% - 48px));
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8vh 0
+}
+.ground {
+  min-height: 100svh;
+  background: var(--ink);
+  color: #05060a;
+  padding: 12vh max(24px, calc((100% - 1180px) / 2));
+}
+.ground h2 {
+  margin: 0;
+  max-width: 760px;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 5.4rem);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
 .logo{
   width:120px;
   height:auto;
@@ -97,6 +120,9 @@ p{margin:56px 0 0 0;width:min(520px,100%);color:var(--muted);font-size:clamp(1re
   Participate →
 </a>
 </main>
+  <section class="ground">
+  <h2>The Good for Nothing Universe begins with very little.</h2>
+</section>
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
 addEventListener("pointermove",e=>{tx=e.clientX/innerWidth*100;ty=e.clientY/innerHeight*100},{passive:true});
