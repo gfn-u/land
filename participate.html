@@ -53,6 +53,16 @@
    opacity: 1;
    visibility: visible;
 }
+.out-of-reach {
+  position: fixed;
+  bottom: 24px;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
  body {
   margin: 0;
   background: #05060a;
@@ -97,6 +107,9 @@
     Please be patient with us while we await ignition (aka, we are still building the cell phone server).
   </p>
 </div>
+  <p class="out-of-reach">
+  If you are out of reach, please reload.
+</p>
   <script>
  const cosmos = document.querySelector(".cosmos");
  const imHere = document.querySelector(".im-here");
@@ -117,6 +130,12 @@
     imHere.style.top = starY + "%";
   star.style.opacity=Math.random()*.65+.15;
   cosmos.appendChild(star);
+ const outOfReach = document.querySelector(".out-of-reach");
+    if (starX < 10 || starX > 90 || starY < 10 || starY > 90) {
+  setTimeout(() => {
+    outOfReach.style.opacity = 1;
+  }, 7000);
+}
 const root = document.documentElement;
 let tx = 50;
 let ty = 45;
