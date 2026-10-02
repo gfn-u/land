@@ -48,14 +48,24 @@ main{
   justify-content:center;
   padding:8vh 0
 }
-.descent {
-  height: 70vh;
+.earthward {
+  position: relative;
+}  
+.earthward::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background:
     radial-gradient(
       circle at var(--x) var(--y),
       color-mix(in srgb, var(--transition-color) 18%, transparent),
       transparent 32%
-    ),
+    );
+}
+.descent {
+  height: 70vh;
+  background:
     radial-gradient(
       ellipse 105% 145% at 50% -10%,
       transparent 0%,
@@ -71,11 +81,6 @@ main{
   color: #05060a;
   padding: 12vh max(24px, calc((100% - 1400px) / 2));
   background:
-  radial-gradient(
-    circle at var(--x) var(--y),
-    color-mix(in srgb, var(--transition-color) 14%, transparent),
-    transparent 32%
-  ),
   radial-gradient(
     circle at var(--x) var(--y),
     rgba(181, 124, 82, .12),
@@ -202,6 +207,7 @@ main p{
   Participate →
 </a>
 </main>
+  <div class="earthward">
   <div class="descent"></div>
   <section class="ground">
   <h2>The Good for Nothing Universe begins with very little.</h2>
@@ -218,6 +224,7 @@ main p{
   </p>
 </div>
 </section>
+</div>
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
   const transitionColors = [
