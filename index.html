@@ -260,15 +260,25 @@ root.style.setProperty("--transition-color", transitionColor);
 addEventListener("pointermove",e=>{tx=e.clientX/innerWidth*100;ty=e.clientY/innerHeight*100},{passive:true});
   addEventListener("scroll", () => {
   const descent = document.querySelector(".descent");
-  const start = descent.offsetTop - innerHeight;
+  const start = descent.offsetTop;
   const end = descent.offsetTop + descent.offsetHeight;
   const progress = Math.min(
     1,
     Math.max(0, (scrollY - start) / (end - start))
   );
   root.style.setProperty("--descent-progress", progress);
-  root.style.setProperty("--orb-color",`color-mix(in srgb, #695d9a ${100 - progress * 100}%, ${transitionColor})`
-);
+  const ground = document.querySelector(".ground");
+  const groundStart = ground.offsetTop;
+  const groundEnd = ground.offsetTop + ground.offsetHeight * .6;
+  const groundProgress = Math.min(
+    1,
+    Math.max(0, (scrollY - groundStart) / (groundEnd - groundStart))
+  );
+  const descentColor =
+    `color-mix(in srgb, #695d9a ${100 - progress * 100}%, ${transitionColor})`;
+  const orbColor =
+    `color-mix(in srgb, ${descentColor} ${100 - groundProgress * 100}%, #B57C52)`;
+  root.style.setProperty("--orb-color", orbColor);
 }, {passive:true});
 function breathe(){x+=(tx-x)*.025;y+=(ty-y)*.025;root.style.setProperty("--x",x+"%");root.style.setProperty("--y",y+"%");requestAnimationFrame(breathe)}
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches)breathe();
