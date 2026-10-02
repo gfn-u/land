@@ -32,12 +32,42 @@ body{
   color:var(--ink);
   font-family:var(--font-body);
 }
-.cosmos{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(circle at var(--x) var(--y),rgba(105,93,154,.20),rgba(49,64,109,.09) 20%,transparent 46%),radial-gradient(circle at 84% 18%,rgba(169,122,93,.07),transparent 28%),linear-gradient(160deg,#090b12,#05060a 48%,#080810)}
+.cosmos{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 84% 18%,
+      rgba(169,122,93,.07),
+      transparent 28%
+    ),
+    linear-gradient(
+      160deg,
+      #090b12,
+      #05060a 48%,
+      #080810
+    );
+}
 .star{
   position:absolute;
   border-radius:50%;
   background:white;
   pointer-events:none;
+}
+.page-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at var(--x) var(--y),
+      color-mix(in srgb, var(--orb-color) 20%, transparent),
+      rgba(49, 64, 109, .09) 20%,
+      transparent 46%
+    );
 }
 main{
   min-height:100svh;
@@ -51,18 +81,6 @@ main{
 .earthward {
   position: relative;
 }  
-.earthward::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      circle at var(--x) var(--y),
-      color-mix(in srgb, var(--transition-color) 18%, transparent),
-      transparent 32%
-    );
-}
 .descent {
   height: 70vh;
   background:
@@ -192,6 +210,7 @@ main p{
 </style>
 </head>
 <body>
+  <div class="page-glow" aria-hidden="true"></div>
 <div class="cosmos" aria-hidden="true"></div>
 <main>
 <img class="logo" 
@@ -214,10 +233,10 @@ main p{
     <p class="ground-intro">  It is an evolving infrastructure for making things possible without deciding in advance what they must become.</p>
 <div class="ground-body">
   <p>
-    Structure is introduced where needed. What does not need to be determined remains open. Whether a discussion, program, product or production, each undertaking creates conditions in which those who participate are free to be Good for Nothing - because when we understand and attend to the infrastructure of our good will, we can trust one another to be good.
+    Rule of thumb: only introduce structure where needed and let what does not need to be determined remain open. Whether a discussion, program, product or production, the focus of each collaboration is to creates conditions in which those who participate are trusted co-creators - because when we understand and attend to the infrastructure of our good will, we can trust one another to be good.
   </p>
   <p>
-    The Good for Nothing Universe begins with humans willing to consider that what is needed may already be available. The question is not what is missing, but what matters: What conditions need to be created? What resources are already present? What becomes possible from here?
+    The Good for Nothing Universe begins with humans willing to consider that what is needed may already be available - whether that be knowledge, experience, or resources. The question is not what is missing, but what matters is: What conditions need to be created for good outcomes to be available? What resources are already present? How do we organize ourselves and our resources most efficiently and effectively?
   </p>
   <p>
     And if what is needed is already there, we will say so. Not every situation needs our participation. Sometimes the most useful contribution is recognizing that nothing needs to be added.
@@ -237,7 +256,20 @@ const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
 const transitionColor =
   transitionColors[Math.floor(Math.random() * transitionColors.length)];
 root.style.setProperty("--transition-color", transitionColor);
+    root.style.setProperty("--orb-color", "#695d9a");
 addEventListener("pointermove",e=>{tx=e.clientX/innerWidth*100;ty=e.clientY/innerHeight*100},{passive:true});
+  addEventListener("scroll", () => {
+  const descent = document.querySelector(".descent");
+  const start = descent.offsetTop - innerHeight;
+  const end = descent.offsetTop + descent.offsetHeight;
+  const progress = Math.min(
+    1,
+    Math.max(0, (scrollY - start) / (end - start))
+  );
+  root.style.setProperty("--descent-progress", progress);
+  root.style.setProperty("--orb-color",`color-mix(in srgb, #695d9a ${100 - progress * 100}%, ${transitionColor})`
+);
+}, {passive:true});
 function breathe(){x+=(tx-x)*.025;y+=(ty-y)*.025;root.style.setProperty("--x",x+"%");root.style.setProperty("--y",y+"%");requestAnimationFrame(breathe)}
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches)breathe();
 const cosmos=document.querySelector(".cosmos");
