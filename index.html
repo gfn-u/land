@@ -45,21 +45,20 @@ main{
 }
 .descent {
   height: 70vh;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(244, 241, 232, .03) 25%,
-    rgba(244, 241, 232, .12) 50%,
-    rgba(244, 241, 232, .35) 75%,
-    rgba(244, 241, 232, .55) 100%
-  );
-} 
+  background:
+    radial-gradient(
+      ellipse 110% 75% at 50% 125%,
+      rgba(244, 241, 232, .55) 0%,
+      rgba(244, 241, 232, .30) 38%,
+      rgba(244, 241, 232, .10) 65%,
+      transparent 88%
+    );
+}
 .ground {
   min-height: 100svh;
   color: #05060a;
   padding: 12vh max(24px, calc((100% - 1180px) / 2));
-  margin-top: -80px;
-  padding-top: calc(12vh + 80px);
+
   background:
     radial-gradient(
       circle at var(--x) var(--y),
