@@ -51,7 +51,7 @@ main{
 }
 .ground h2 {
   margin: 0;
-  max-width: 760px;
+  max-width: 1000px;
   font-family: var(--font-body);
   font-size: clamp(2.8rem, 3vw, 4rem);
   font-weight: 500;
@@ -61,7 +61,7 @@ main{
 }
 .ground-intro {
   margin: 64px 0 0;
-  max-width: 560px;
+  max-width: 760px;
   color: #05060a;
   font-family: var(--font-body);
   font-size: clamp(1.15rem, 1.6vw, 1.4rem);
@@ -81,8 +81,14 @@ main{
   font-size: 1.1rem;
   line-height: 1.65;
 }
+  .ground-body p:nth-child(1) {
+  align-self: center;
+}
 .ground-body p:nth-child(2) {
   align-self: flex-end;
+}
+  .ground-body p:nth-child(3) {
+  transform: translateX(120px);
 }
 .logo{
   width:120px;
