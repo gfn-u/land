@@ -46,21 +46,26 @@ main{
 .descent {
   height: 70vh;
   background:
+    /* 2. DISPLACEMENT — the inverse horizon */
     radial-gradient(
-      ellipse 140% 115% at 50% -35%,
+      ellipse 115% 105% at 50% 15%,
       transparent 0%,
-      transparent 40%,
-      rgba(244, 241, 232, .08) 55%,
-      rgba(244, 241, 232, .16) 68%,
-      transparent 82%
+      transparent 48%,
+      rgba(244, 241, 232, .06) 58%,
+      rgba(244, 241, 232, .18) 70%,
+      rgba(244, 241, 232, .38) 82%,
+      rgba(244, 241, 232, .55) 94%
     ),
+    /* 1. ILLUMINATION — light appears before it displaces */
     linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(244, 241, 232, .03) 15%,
-      rgba(244, 241, 232, .08) 35%,
-      rgba(244, 241, 232, .18) 55%,
-      rgba(244, 241, 232, .35) 75%,
+      rgba(244, 241, 232, .015) 12%,
+      rgba(244, 241, 232, .03) 28%,
+      rgba(244, 241, 232, .08) 45%,
+      rgba(244, 241, 232, .20) 65%,
+      rgba(244, 241, 232, .40) 82%,
+      rgba(244, 241, 232, .55) 94%,
       rgba(244, 241, 232, .55) 100%
     );
 }
