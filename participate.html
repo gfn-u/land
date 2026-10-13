@@ -31,6 +31,31 @@
    background:white;
    pointer-events:none;
 }
+      .orientation-mark {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+
+  width: 52px;
+  height: 52px;
+  padding: 9px;
+
+  border: 1px solid rgba(244, 241, 232, .24);
+  border-radius: 50%;
+
+  background: rgba(5, 6, 10, .76);
+  backdrop-filter: blur(12px);
+
+  cursor: pointer;
+}
+
+.orientation-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
  .im-here {
    position: absolute;
    background: none;
@@ -81,6 +106,18 @@
   </style>
 </head>
 <body>
+  <button
+    class="orientation-mark"
+    type="button"
+    aria-label="Open GFnU Field Guide"
+    title="Open Field Guide"
+  >
+    <img
+      src="assets/logo/gfnu-logo-white.png"
+      alt=""
+    >
+  </button>
+
   <div class="cosmos" aria-hidden="true"></div>
 <button class="im-here">
   I'm here
