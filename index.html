@@ -225,12 +225,89 @@ main p{
   line-height:1.5
 }
 .archives {
-  background: #e9e1d2;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
   color: #25221f;
   padding: 120px 24px 160px;
+
+  background-color: #e9e1d2;
+  background-image:
+    linear-gradient(
+      to bottom,
+      #f4f1e8 0%,
+      #eee8dc 20%,
+      #e9e1d2 65%,
+      #e4d8c7 100%
+    );
+}
+  .archives::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  opacity: .18;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(91, 68, 47, .035) 0px,
+      rgba(91, 68, 47, .035) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(91, 68, 47, .025) 0px,
+      rgba(91, 68, 47, .025) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 12%,
+    black 65%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 12%,
+    black 65%
+  );
+}
+
+/* Large background forms */
+
+.archives::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+
+  width: 520px;
+  height: 520px;
+
+  left: -340px;
+  top: 180px;
+
+  border-radius: 50%;
+  background: #B66F52;
+
+  box-shadow:
+    1120px 520px 0 -190px #D0A19A,
+    970px -160px 0 -235px #4F8F8A;
 }
 
 .archives-inner {
+  position: relative;
+  z-index: 1;
+
   width: min(1180px, 100%);
   margin: 0 auto;
 }
@@ -325,9 +402,9 @@ main p{
   </p>
   <p>
     The form changes with the work. Sometimes it is a room full of people in a town hall. Sometimes it is a program, an experience, a system, a piece of writing, or a mathematical investigation. The practice underneath is similar: understand what the situation actually requires, create the conditions carefully, and leave enough space for what could not have been planned.  
-  <p>
-    
   </p>
+  
+  <p>
   In this work, it is less interesting to design the answer than to make surprising answers possible amongst the people who have them.
    </p>
 </div>
