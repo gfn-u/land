@@ -192,6 +192,46 @@ main{
     transform: translateY(-8px);
   }
 }
+  .orientation-mark {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+
+  width: 52px;
+  height: 52px;
+  padding: 9px;
+
+  border: 1px solid rgba(244, 241, 232, .24);
+  border-radius: 50%;
+
+  background: rgba(5, 6, 10, .76);
+  backdrop-filter: blur(12px);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+
+  transition:
+    opacity .6s ease,
+    transform .6s ease,
+    visibility .6s;
+
+  pointer-events: none;
+}
+
+.orientation-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.orientation-mark.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 .participate {
   align-self: flex-end;
    color: var(--muted);
@@ -366,6 +406,18 @@ background-image:
 </style>
 </head>
 <body>
+  <button
+  class="orientation-mark"
+  type="button"
+  aria-label="Open GFnU Field Orientation"
+  title="GFnU – Field Orientation"
+  disabled
+>
+  <img
+    src="assets/logo/gfnu-logo-white.png"
+    alt=""
+  >
+</button>
   <div class="page-glow" aria-hidden="true"></div>
 <div class="cosmos" aria-hidden="true"></div>
 <main>
@@ -496,6 +548,20 @@ for(let i=0;i<140;i++){
   star.style.opacity=Math.random()*.65+.15;
   cosmos.appendChild(star);
 }
+  const orientationMark = document.querySelector(".orientation-mark");
+  
+function updateOrientationMark() {
+  const originalLogo = document.querySelector(".logo");
+  const logoPosition = originalLogo.getBoundingClientRect();
+
+  orientationMark.classList.toggle(
+    "is-visible",
+    logoPosition.bottom < 0
+  );
+}
+
+window.addEventListener("scroll", updateOrientationMark, { passive: true });
+updateOrientationMark();
 </script>
 </body>
 </html>
