@@ -181,6 +181,51 @@ main{
   transition:opacity 1.5s ease; 
   animation: float 12s ease-in-out infinite;
   }
+  .logo-button {
+  align-self: flex-end;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.logo-button .logo {
+  display: block;
+}
+  .logo-button {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo-callout {
+  margin-bottom: 48px;
+
+  color: var(--muted);
+  font-family: var(--font-correspondence);
+  font-size: .7rem;
+  font-weight: 400;
+  letter-spacing: .08em;
+  white-space: nowrap;
+
+  opacity: .7;
+  transition: opacity .6s ease;
+}
+
+.logo-button:hover .logo-callout,
+.logo-button:focus-visible .logo-callout {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .logo-button {
+    gap: 12px;
+  }
+
+  .logo-callout {
+    font-size: .6rem;
+    letter-spacing: .03em;
+  }
+}
    .logo:hover {
     opacity: 1;
   }
@@ -231,6 +276,140 @@ main{
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: auto;
+}
+  .field-guide[hidden] {
+  display: none;
+}
+
+.field-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px;
+
+  color: var(--ink);
+  background: rgba(5, 6, 10, .96);
+  backdrop-filter: blur(20px);
+}
+
+.field-guide-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+
+  font-family: var(--font-ui);
+  font-size: 2rem;
+  font-weight: 400;
+
+  cursor: pointer;
+}
+
+.field-guide-inner {
+  width: min(760px, 100%);
+}
+
+.field-guide-heading {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.field-guide-symbol {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.field-guide-heading h2 {
+  margin: 0;
+  font-family: var(--font-correspondence);
+  font-size: .8rem;
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.field-guide-compass {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  gap: 48px 16px;
+  text-align: center;
+}
+
+.field-guide-compass a {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  text-decoration: none;
+  transition: opacity .3s ease;
+}
+
+.field-guide-compass a:hover {
+  opacity: .6;
+}
+
+.field-guide-compass a span {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-ui);
+  font-size: 1.2rem;
+}
+
+.guide-north {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.guide-west {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.guide-east {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.guide-south {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.field-guide-compass a[aria-disabled="true"] {
+  opacity: .35;
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  .field-guide {
+    padding: 20px;
+  }
+
+  .field-guide-compass {
+    gap: 48px 8px;
+  }
+
+  .field-guide-compass a {
+    font-size: 1.1rem;
+  }
 }
 .participate {
   align-self: flex-end;
@@ -409,22 +588,82 @@ background-image:
   <button
   class="orientation-mark"
   type="button"
-  aria-label="Open GFnU Field Orientation"
-  title="GFnU – Field Orientation"
-  disabled
+ aria-label="Open GFnU Field Guide"
+ title="Open Field Guide"
 >
   <img
     src="assets/logo/gfnu-logo-white.png"
     alt=""
   >
 </button>
+  <div
+  class="field-guide"
+  id="field-guide"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="field-guide-title"
+  hidden
+>
+  <button
+    class="field-guide-close"
+    type="button"
+    aria-label="Close Field Guide"
+  >
+    ×
+  </button>
+
+  <div class="field-guide-inner">
+
+  <nav class="field-guide-compass" aria-label="Field Guide destinations">
+
+  <div class="field-guide-heading">
+    <div class="field-guide-symbol" aria-hidden="true">⧈</div>
+    <h2 id="field-guide-title">GFnU – Field Guide</h2>
+  </div>
+
+      <a class="guide-north" href="index.html">
+        <span>↑</span>
+        Back to Landing
+      </a>
+
+      <a class="guide-west" href="#" aria-disabled="true">
+        <span>←</span>
+        Acquire Goods
+      </a>
+
+      <a class="guide-east" href="participate.html">
+        Participate
+        <span>→</span>
+      </a>
+
+      <a class="guide-south" href="#" aria-disabled="true">
+        <span>↓</span>
+        Explore Knowledge
+      </a>
+
+    </nav>
+
+  </div>
+</div>
   <div class="page-glow" aria-hidden="true"></div>
 <div class="cosmos" aria-hidden="true"></div>
 <main>
-<img class="logo" 
-  src="assets/logo/gfnu-logo-white.png" 
-  alt="Good for Nothing Universe"
+<button
+  class="logo-button"
+  type="button"
+  aria-label="Open GFnU Field Guide"
+  title="Open Field Guide"
+>
+  <span class="logo-callout" aria-hidden="true">
+    Open Field Guide ↗
+  </span>
+
+  <img
+    class="logo"
+    src="assets/logo/gfnu-logo-white.png"
+    alt=""
   >
+</button>
 <h1>Creating conditions where something good is the most likely outcome.</h1>
 <p>The Good for Nothing Universe is at your service.</p>
 <a 
@@ -562,6 +801,45 @@ function updateOrientationMark() {
 
 window.addEventListener("scroll", updateOrientationMark, { passive: true });
 updateOrientationMark();
+  const fieldGuide = document.querySelector("#field-guide");
+const fieldGuideClose = document.querySelector(".field-guide-close");
+const guideTriggers = document.querySelectorAll(
+  ".logo-button, .orientation-mark"
+);
+
+let lastGuideTrigger = null;
+
+function openFieldGuide(event) {
+  lastGuideTrigger = event.currentTarget;
+  fieldGuide.hidden = false;
+  document.body.style.overflow = "hidden";
+  fieldGuideClose.focus();
+}
+
+function closeFieldGuide() {
+  fieldGuide.hidden = true;
+  document.body.style.overflow = "";
+  if (lastGuideTrigger) lastGuideTrigger.focus();
+}
+
+guideTriggers.forEach(button => {
+  button.addEventListener("click", openFieldGuide);
+});
+
+fieldGuideClose.addEventListener("click", closeFieldGuide);
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !fieldGuide.hidden) {
+    closeFieldGuide();
+  }
+});
+
+// Unfinished destinations should not navigate.
+document.querySelectorAll(
+  '.field-guide a[aria-disabled="true"]'
+).forEach(link => {
+  link.addEventListener("click", event => event.preventDefault());
+});
 </script>
 </body>
 </html>
