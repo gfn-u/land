@@ -233,8 +233,13 @@ main p{
   padding: 120px 24px 160px;
 
   background-color: #e9e1d2;
-  background-image:
-    linear-gradient(
+background-image:
+  radial-gradient(
+    circle at var(--x) var(--y),
+    color-mix(in srgb, var(--orb-color) 20%, transparent),
+    transparent 46%
+  ),
+  linear-gradient(
       to bottom,
       #f4f1e8 0%,
       #eee8dc 20%,
@@ -281,9 +286,7 @@ main p{
     black 65%
   );
 }
-
-/* Large background forms */
-
+  
 .archives::after {
   content: "";
   position: absolute;
