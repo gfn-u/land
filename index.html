@@ -224,6 +224,70 @@ main p{
   font-size:clamp(1rem,1.5vw,1.25rem);
   line-height:1.5
 }
+.archives {
+  background: #e9e1d2;
+  color: #25221f;
+  padding: 120px 24px 160px;
+}
+
+.archives-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.archives-label {
+  font-family: var(--font-correspondence);
+  font-size: .75rem;
+  letter-spacing: .12em;
+  color: #746c60;
+}
+
+.archives h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin: 40px 0;
+}
+
+.archives-intro {
+  max-width: 620px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 100px;
+}
+
+.archives-collection {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.archive-item {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(37, 34, 31, .22);
+  min-height: 260px;
+}
+
+.archive-number {
+  font-family: var(--font-correspondence);
+  font-size: .75rem;
+  color: #746c60;
+}
+
+.archive-item h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 60px 0 12px;
+}
+
+.archive-item p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
 @media(max-width:700px){
   main{width:calc(100% - 32px)}
   h1{font-size:clamp(3.1rem,15vw,5.4rem);line-height:.93}
@@ -261,12 +325,53 @@ main p{
   </p>
   <p>
     The form changes with the work. Sometimes it is a room full of people in a town hall. Sometimes it is a program, an experience, a system, a piece of writing, or a mathematical investigation. The practice underneath is similar: understand what the situation actually requires, create the conditions carefully, and leave enough space for what could not have been planned.  
+  <p>
+    
   </p>
   In this work, it is less interesting to design the answer than to make surprising answers possible amongst the people who have them.
    </p>
 </div>
 </section>
 </div>
+  <section class="archives" id="archives">
+  <div class="archives-inner">
+
+    <p class="archives-label">GFnU / ARCHIVES</p>
+
+    <h2>From the Archives</h2>
+
+    <p class="archives-intro">
+      The Good for Nothing Universe keeps an evolving
+      collection of things made, tried, and developed together.
+      Some are ready to use. Others are still taking shape.
+      All are here to be encountered, put to work, questioned,
+      adapted, or developed further.
+    </p>
+
+    <div class="archives-collection">
+
+      <article class="archive-item">
+        <span class="archive-number">001</span>
+        <h3>Volume 0</h3>
+        <p>An inquiry into how inquiry proceeds.</p>
+      </article>
+
+      <article class="archive-item">
+        <span class="archive-number">002</span>
+        <h3>Spiral Engine</h3>
+        <p>An interactive format for exploration.</p>
+      </article>
+
+      <article class="archive-item">
+        <span class="archive-number">003</span>
+        <h3>The GFnU Truck</h3>
+        <p>A mobile space for gatherings and experiments.</p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
   const transitionColors = [
