@@ -1,0 +1,220 @@
+
+/* GFnU — Shared Field Guide */
+
+/* Small navigation button */
+
+.orientation-mark {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+
+  width: 52px;
+  height: 52px;
+  padding: 9px;
+
+  border: 1px solid rgba(244, 241, 232, .24);
+  border-radius: 50%;
+
+  background: rgba(5, 6, 10, .76);
+  backdrop-filter: blur(12px);
+
+  cursor: pointer;
+}
+
+.orientation-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* On Landing, the small button appears after scrolling */
+
+body[data-guide-page="landing"] .orientation-mark {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition:
+    opacity .6s ease,
+    transform .6s ease,
+    visibility .6s;
+}
+
+body[data-guide-page="landing"] .orientation-mark.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Floating Field Guide */
+
+.field-guide[hidden] {
+  display: none;
+}
+
+.field-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  color: var(--ink, #f4f1e8);
+  background: rgba(5, 6, 10, .38);
+  backdrop-filter: blur(3px);
+}
+
+.field-guide-inner {
+  position: relative;
+  width: min(760px, 100%);
+  padding: 72px 48px;
+
+  background: rgba(5, 6, 10, .96);
+  border: 1px solid rgba(244, 241, 232, .18);
+  border-radius: 14px;
+
+  box-shadow: 0 28px 100px rgba(0, 0, 0, .55);
+}
+
+.field-guide-close {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+
+  border: 0;
+  background: transparent;
+  color: var(--ink, #f4f1e8);
+
+  font-family: var(--font-ui, "Inter", sans-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* Compass */
+
+.field-guide-compass {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  gap: 48px 16px;
+  text-align: center;
+}
+
+.field-guide-heading {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.field-guide-symbol {
+  font-family: var(--font-display, "EB Garamond", serif);
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.field-guide-heading h2 {
+  margin: 0;
+
+  font-family: var(--font-correspondence, monospace);
+  font-size: .8rem;
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+
+  color: var(--muted, rgba(244, 241, 232, .62));
+}
+
+.field-guide-compass a {
+  color: var(--ink, #f4f1e8);
+
+  font-family: var(--font-display, "EB Garamond", serif);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+
+  text-decoration: none;
+  transition: opacity .3s ease;
+}
+
+.field-guide-compass a:hover {
+  opacity: .6;
+}
+
+.field-guide-compass a span {
+  display: block;
+  margin-bottom: 12px;
+
+  font-family: var(--font-ui, "Inter", sans-serif);
+  font-size: 1.2rem;
+}
+
+.guide-north {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.guide-west {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.guide-east {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.guide-south {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.field-guide-compass a[aria-disabled="true"] {
+  opacity: .35;
+  cursor: default;
+}
+
+/* Smaller screens */
+
+@media (max-width: 600px) {
+  .field-guide {
+    padding: 20px;
+  }
+
+  .field-guide-inner {
+    padding: 64px 18px;
+  }
+
+  .field-guide-compass {
+    gap: 48px 8px;
+  }
+
+  .field-guide-compass a {
+    font-size: 1.1rem;
+  }
+}
+
+/* Short screens */
+
+@media (max-height: 550px) {
+  .field-guide {
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+
+  .field-guide-inner {
+    margin: auto;
+  }
+}
