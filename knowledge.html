@@ -1,0 +1,95 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#05060a">
+  <title>Explore Knowledge — Good for Nothing</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #f4f1e8;
+      --muted: rgba(244,241,232,.62);
+      --font-display: "EB Garamond", serif;
+      --font-correspondence: "IBM Plex Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      background:
+        radial-gradient(
+          circle at 50% 65%,
+          rgba(79,143,138,.09),
+          transparent 45%
+        ),
+        linear-gradient(160deg,#090b12,#05060a 65%,#080810);
+      color: var(--ink);
+    }
+
+    main {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-family: var(--font-correspondence);
+      font-size: .72rem;
+      letter-spacing: .15em;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 32px 0 24px;
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem,8vw,7rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1;
+    }
+
+    .intro {
+      max-width: 520px;
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem,2.5vw,1.6rem);
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .status {
+      margin-top: 72px;
+      font-family: var(--font-correspondence);
+      font-size: .75rem;
+      color: var(--muted);
+    }
+  </style>
+
+  <link rel="stylesheet" href="field-guide.css">
+</head>
+
+<body>
+  <main>
+    <p class="eyebrow">GFNU / SOUTH</p>
+    <h1>Explore Knowledge</h1>
+    <p class="intro">
+      A space for inquiries, observations,
+      and things worth sharing.
+    </p>
+    <p class="status">The collection is taking shape.</p>
+  </main>
+
+  <script src="field-guide.js"></script>
+</body>
+</html>
