@@ -9,11 +9,10 @@
       label: "Back to Landing",
       href: "index.html"
     },
-    {
-      direction: "west",
-      label: "Acquire Goods",
-      href: null
-    },
+    { 
+      direction: "west", 
+      label: "Acquire Goods", 
+      href: "goods.html" },
     {
       direction: "east",
       label: "Participate",
