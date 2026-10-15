@@ -1,0 +1,312 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#05060a">
+  <title>Acquire Goods — Good for Nothing</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #f4f1e8;
+      --muted: rgba(244,241,232,.62);
+      --font-display: "EB Garamond", serif;
+      --font-body: "Source Sans 3", sans-serif;
+      --font-ui: "Inter", sans-serif;
+      --font-correspondence: "IBM Plex Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      background: #05060a;
+      color: var(--ink);
+      font-family: var(--font-body);
+    }
+
+    .cosmos {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(105,93,154,.16),
+          rgba(49,64,109,.07) 28%,
+          transparent 65%
+        ),
+        linear-gradient(160deg,#090b12,#05060a 48%,#080810);
+    }
+
+    main {
+      position: relative;
+      min-height: 100svh;
+      padding: 12vh 24px 80px;
+    }
+
+    .introduction {
+      position: relative;
+      z-index: 1;
+      width: min(700px,100%);
+      margin: 0 auto;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-family: var(--font-correspondence);
+      font-size: .7rem;
+      letter-spacing: .14em;
+    }
+
+    h1 {
+      margin: 24px 0;
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem,8vw,7rem);
+      font-weight: 400;
+      letter-spacing: -.05em;
+      line-height: 1;
+    }
+
+    .introduction p {
+      max-width: 460px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .goods-field {
+      position: relative;
+      width: min(1100px,100%);
+      height: min(55vh,540px);
+      min-height: 320px;
+      margin: 40px auto 0;
+    }
+
+    .good-star {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      transform: translate(-50%,-50%);
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .good-star::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--ink);
+      box-shadow:
+        0 0 10px rgba(244,241,232,.7),
+        0 0 26px rgba(143,184,199,.35);
+      transition: transform .4s ease,box-shadow .4s ease;
+    }
+
+    .good-star:hover::before,
+    .good-star:focus-visible::before {
+      transform: scale(1.8);
+      box-shadow:
+        0 0 14px rgba(244,241,232,.9),
+        0 0 34px rgba(143,184,199,.6);
+    }
+
+    .good-star:focus-visible {
+      outline: 1px solid var(--muted);
+      outline-offset: 3px;
+    }
+
+    .good-star[aria-pressed="true"]::before {
+      transform: scale(1.5);
+    }
+
+    .good-detail[hidden] { display: none; }
+
+    .good-detail {
+      position: relative;
+      width: min(520px,calc(100% - 48px));
+      margin: -10px auto 80px;
+      padding: 36px;
+      border: 1px solid rgba(244,241,232,.18);
+      border-radius: 12px;
+      background: rgba(5,6,10,.94);
+    }
+
+    .good-detail h2 {
+      margin: 12px 0;
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 400;
+    }
+
+    .good-detail p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .detail-close {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      main { padding-top: 15vh; }
+      .goods-field { height: 45vh; }
+      .good-detail { padding: 28px; }
+    }
+  </style>
+
+  <link rel="stylesheet" href="field-guide.css">
+</head>
+
+<body>
+  <div class="cosmos" aria-hidden="true"></div>
+
+  <main>
+    <header class="introduction">
+      <div class="eyebrow">GFNU / WEST</div>
+      <h1>Acquire Goods</h1>
+      <p>
+        Things to encounter, take away, put to work,
+        or pass along.
+      </p>
+    </header>
+
+    <div
+      class="goods-field"
+      id="goods-field"
+      aria-label="Available goods"
+    ></div>
+
+    <section class="good-detail" id="good-detail" hidden>
+      <button
+        class="detail-close"
+        type="button"
+        aria-label="Close artifact"
+      >×</button>
+      <div class="eyebrow" id="good-type"></div>
+      <h2 id="good-title"></h2>
+      <p id="good-description"></p>
+    </section>
+  </main>
+
+  <script>
+    // Each entry creates exactly one star.
+    // Add or remove goods here.
+    const goods = [
+      {
+        name: "Spiral Engine",
+        type: "INTERACTIVE FORMAT",
+        description: "An interactive format for exploration."
+      },
+      {
+        name: "Volume 0",
+        type: "PUBLICATION",
+        description: "An inquiry into how inquiry proceeds."
+      }
+    ];
+
+    const field = document.querySelector("#goods-field");
+    const detail = document.querySelector("#good-detail");
+    const detailTitle = document.querySelector("#good-title");
+    const detailType = document.querySelector("#good-type");
+    const detailDescription = document.querySelector("#good-description");
+    const closeDetail = document.querySelector(".detail-close");
+
+    let activeStar = null;
+
+    function randomPositions(count) {
+      const positions = [];
+
+      for (let i = 0; i < count; i++) {
+        let position;
+        let attempts = 0;
+
+        do {
+          position = {
+            x: 8 + Math.random() * 84,
+            y: 10 + Math.random() * 80
+          };
+          attempts++;
+        } while (
+          attempts < 100 &&
+          positions.some(other =>
+            Math.hypot(position.x - other.x, position.y - other.y) < 18
+          )
+        );
+
+        positions.push(position);
+      }
+
+      return positions;
+    }
+
+    const positions = randomPositions(goods.length);
+
+    goods.forEach((good, index) => {
+      const star = document.createElement("button");
+      const position = positions[index];
+
+      star.type = "button";
+      star.className = "good-star";
+      star.style.left = position.x + "%";
+      star.style.top = position.y + "%";
+      star.setAttribute("aria-label", "Explore " + good.name);
+      star.setAttribute("aria-pressed", "false");
+      star.title = good.name;
+
+      star.addEventListener("click", () => {
+        if (activeStar) {
+          activeStar.setAttribute("aria-pressed", "false");
+        }
+
+        activeStar = star;
+        star.setAttribute("aria-pressed", "true");
+
+        detailType.textContent = good.type;
+        detailTitle.textContent = good.name;
+        detailDescription.textContent = good.description;
+        detail.hidden = false;
+        detail.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      });
+
+      field.appendChild(star);
+    });
+
+    closeDetail.addEventListener("click", () => {
+      detail.hidden = true;
+
+      if (activeStar) {
+        activeStar.setAttribute("aria-pressed", "false");
+        activeStar.focus();
+        activeStar = null;
+      }
+    });
+  </script>
+
+  <script src="field-guide.js"></script>
+</body>
+</html>
