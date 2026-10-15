@@ -265,7 +265,7 @@ main p{
   font-size:clamp(1rem,1.5vw,1.25rem);
   line-height:1.5
 }
-.archives {
+.artifacts {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -283,7 +283,7 @@ background-image:
       #e4d8c7 100%
     );
 }
-  .archives::before {
+  .artifacts::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -323,7 +323,7 @@ background-image:
   );
 }
   
-.archives::after {
+.artifacts::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -343,7 +343,7 @@ background-image:
     970px -160px 0 -235px #4F8F8A;
 }
 
-.archives-inner {
+.artifacts-inner {
   position: relative;
   z-index: 1;
 
@@ -351,14 +351,14 @@ background-image:
   margin: 0 auto;
 }
 
-.archives-label {
+.artifacts-label {
   font-family: var(--font-correspondence);
   font-size: .75rem;
   letter-spacing: .12em;
   color: #746c60;
 }
 
-.archives h2 {
+.artifacts h2 {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 7vw, 7rem);
   font-weight: 400;
@@ -367,40 +367,40 @@ background-image:
   margin: 40px 0;
 }
 
-.archives-intro {
+.artifacts-intro {
   max-width: 620px;
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 100px;
 }
 
-.archives-collection {
+.artifacts-collection {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
-.archive-item {
+.artifacts-item {
   min-width: 0;
   padding: 28px;
   border: 1px solid rgba(37, 34, 31, .22);
   min-height: 260px;
 }
 
-.archive-number {
+.artifacts-number {
   font-family: var(--font-correspondence);
   font-size: .75rem;
   color: #746c60;
 }
 
-.archive-item h3 {
+.artifacts-item h3 {
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 400;
   margin: 60px 0 12px;
 }
 
-.archive-item p {
+.artifacts-item p {
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -461,7 +461,7 @@ background-image:
 <section class="artifacts" id="artifacts">
   <div class="artifacts-inner">
 
-    <p class="archives-label">GFnU / ARCHIVES</p>
+    <p class="artifacts-label">GFnU / ARTIFACTS</p>
 
     <h2>Curated Artifacts</h2>
 
@@ -481,13 +481,13 @@ background-image:
         <p>An inquiry into how inquiry proceeds.</p>
       </article>
 
-      <article class="archive-item">
+      <article class="artifacts-item">
         <span class="artifacts-number">002</span>
         <h3>Spiral Engine</h3>
         <p>An interactive format for exploration.</p>
       </article>
 
-      <article class="archive-item">
+      <article class="artifacts-item">
         <span class="artifacts-number">003</span>
         <h3>The GFnU Truck</h3>
         <p>A mobile space for gatherings and experiments.</p>
