@@ -21,7 +21,7 @@
     {
       direction: "south",
       label: "Explore Knowledge",
-      href: null
+      href: "knowledge.html"
     }
   ];
 
