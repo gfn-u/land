@@ -111,9 +111,82 @@
 
   position: relative;
 }
-
+      /* Arrange our fragments when the space opens */
 .participation-space.open {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+/* The welcome letter occupies the left side */
+.participation-space .letter {
+  grid-column: 1 / span 6;
+  width: 100%;
+}
+
+/* Contact us occupies a smaller area on the right */
+.contact-block {
+  grid-column: 8 / span 4;
+  margin-top: 90px;
+
+  padding: 30px;
+  background: #e9e1d2;
+  color: #25221f;
+  border-radius: var(--radius);
+}
+
+/* Small archival label */
+.block-label {
+  font-family: var(--font-correspondence);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  color: #746c60;
+}
+
+.contact-block h2 {
+  margin: 30px 0 12px;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.contact-block p {
+  line-height: 1.5;
+}
+
+.block-toggle {
+  margin-top: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #25221f;
+  font-family: var(--font-correspondence);
+  cursor: pointer;
+}
+
+/* An expanded block gets more room */
+.contact-block.expanded {
+  grid-column: 7 / span 6;
+}
+
+/* On narrow screens, stack the fragments */
+@media (max-width: 700px) {
+  .participation-space.open {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .participation-space .letter,
+  .contact-block,
+  .contact-block.expanded {
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .contact-block {
+    margin-top: 0;
+  }
 }
   </style>
   <link rel="stylesheet" href="field-guide.css">
@@ -166,8 +239,27 @@
   <p>
     Please be patient with us while we await ignition (aka, we are still building the cell phone server).
   </p>
-</div>
+  </div>
+
+  <article class="contact-block">
+    <span class="block-label">CORRESPONDENCE / 001</span>
+    <h2>Contact us</h2>
+    <p>
+      Have an idea, a question, an invitation, or something
+      entirely unexpected?
+    </p>
+    <button class="block-toggle" type="button" aria-expanded="false">
+      Write to us +
+    </button>
+
+    <div class="contact-details" hidden>
+      <p>
+        A place to begin a conversation.
+        Soon, you'll be able to write to us directly from here.
+      </p>
     </div>
+  </article>
+
 </section>
   <p class="out-of-reach">
   If you are out of reach, please reload.
@@ -219,6 +311,20 @@ function breathe() {
   requestAnimationFrame(breathe);
 }
 breathe();
+    const contactBlock = document.querySelector(".contact-block");
+const contactToggle = document.querySelector(".block-toggle");
+const contactDetails = document.querySelector(".contact-details");
+
+contactToggle.addEventListener("click", () => {
+  const isExpanded = contactBlock.classList.toggle("expanded");
+
+  contactDetails.hidden = !isExpanded;
+  contactToggle.setAttribute("aria-expanded", isExpanded);
+
+  contactToggle.textContent = isExpanded
+    ? "Close −"
+    : "Write to us +";
+});
   </script>
   <script src="field-guide.js"></script>
 </body>
