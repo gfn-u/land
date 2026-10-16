@@ -263,6 +263,40 @@
       transparent 6px
     );
 }
+      .contact-block {
+  cursor: pointer;
+  transition: width .5s ease, transform .5s ease;
+}
+
+.contact-block.expanded {
+  grid-column: 7 / span 6;
+  width: calc(100% + 32px);
+  z-index: 5;
+  cursor: default;
+}
+
+.contact-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  color: #25221f;
+  font-family: var(--font-ui);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.contact-close[hidden] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .contact-block.expanded {
+    grid-column: 1;
+    width: 100%;
+  }
+}
   </style>
   <link rel="stylesheet" href="field-guide.css">
 </head>
@@ -317,8 +351,11 @@
   </p>
   </div>
 
-  <article class="contact-block">
-   <span class="block-label">001 / CORRESPONDENCE</span>
+ <article class="contact-block">
+  <button class="contact-close" type="button"
+          aria-label="Close Contact us" hidden>×</button>
+
+  <span class="block-label">001 / CORRESPONDENCE</span>
 
 <h2>Contact us</h2>
 
@@ -413,6 +450,34 @@ function breathe() {
   requestAnimationFrame(breathe);
 }
 breathe();
+    const contactBlock = document.querySelector(".contact-block");
+const contactClose = document.querySelector(".contact-close");
+
+function closeContact() {
+  contactBlock.classList.remove("expanded");
+  contactClose.hidden = true;
+}
+
+contactBlock.addEventListener("click", () => {
+  if (!contactBlock.classList.contains("expanded")) {
+    contactBlock.classList.add("expanded");
+    contactClose.hidden = false;
+  }
+});
+
+contactClose.addEventListener("click", (event) => {
+  event.stopPropagation();
+  closeContact();
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    contactBlock.classList.contains("expanded") &&
+    !contactBlock.contains(event.target)
+  ) {
+    closeContact();
+  }
+});
   </script>
   <script src="field-guide.js"></script>
 </body>
