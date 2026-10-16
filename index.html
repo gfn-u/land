@@ -404,6 +404,59 @@ background-image:
   font-size: 1rem;
   line-height: 1.5;
 }
+  .artifacts-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.volume-zero {
+  background: #10131b;
+  color: #f4f1e8;
+  transition: width .5s ease;
+}
+
+.volume-zero .artifacts-number {
+  color: #d0a19a;
+}
+
+.volume-zero.expanded {
+  width: 160%;
+  z-index: 5;
+  cursor: default;
+}
+
+.artifact-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-ui);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.artifact-close[hidden],
+.artifact-details[hidden] {
+  display: none;
+}
+
+.artifact-details {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(244, 241, 232, .25);
+}
+
+@media (max-width: 700px) {
+  .artifacts-collection {
+    grid-template-columns: 1fr;
+  }
+
+  .volume-zero.expanded {
+    width: 100%;
+  }
+}
 @media(max-width:700px){
   main{width:calc(100% - 32px)}
   h1{font-size:clamp(3.1rem,15vw,5.4rem);line-height:.93}
@@ -475,11 +528,26 @@ background-image:
 
     <div class="artifacts-collection">
 
-      <article class="artifacts-item">
-        <span class="artifacts-number">001</span>
-        <h3>Volume 0</h3>
-        <p>An inquiry into how inquiry proceeds.</p>
-      </article>
+    <article class="artifacts-item volume-zero">
+  <button
+    class="artifact-close"
+    type="button"
+    aria-label="Close Volume 0"
+    hidden
+  >×</button>
+
+  <span class="artifacts-number">001</span>
+  <h3>Volume 0</h3>
+  <p>An inquiry into how inquiry proceeds.</p>
+
+  <div class="artifact-details" hidden>
+    <p>
+      A space for examining the process of inquiry itself:
+      how questions emerge, how exploration unfolds,
+      and what becomes possible along the way.
+    </p>
+  </div>
+</article>
 
       <article class="artifacts-item">
         <span class="artifacts-number">002</span>
@@ -551,6 +619,37 @@ for(let i=0;i<140;i++){
   star.style.opacity=Math.random()*.65+.15;
   cosmos.appendChild(star);
 }
+  const volumeZero = document.querySelector(".volume-zero");
+const artifactClose = volumeZero.querySelector(".artifact-close");
+const artifactDetails = volumeZero.querySelector(".artifact-details");
+
+function closeVolumeZero() {
+  volumeZero.classList.remove("expanded");
+  artifactClose.hidden = true;
+  artifactDetails.hidden = true;
+}
+
+volumeZero.addEventListener("click", () => {
+  if (!volumeZero.classList.contains("expanded")) {
+    volumeZero.classList.add("expanded");
+    artifactClose.hidden = false;
+    artifactDetails.hidden = false;
+  }
+});
+
+artifactClose.addEventListener("click", (event) => {
+  event.stopPropagation();
+  closeVolumeZero();
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    volumeZero.classList.contains("expanded") &&
+    !volumeZero.contains(event.target)
+  ) {
+    closeVolumeZero();
+  }
+});
 </script>
 <script src="field-guide.js"></script>
 </body>
