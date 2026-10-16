@@ -1,312 +1,122 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#05060a">
-  <title>Acquire Goods — Good for Nothing</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --ink: #f4f1e8;
-      --muted: rgba(244,241,232,.62);
-      --font-display: "EB Garamond", serif;
-      --font-body: "Source Sans 3", sans-serif;
-      --font-ui: "Inter", sans-serif;
-      --font-correspondence: "IBM Plex Mono", monospace;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100svh;
-      background: #05060a;
-      color: var(--ink);
-      font-family: var(--font-body);
-    }
-
-    .cosmos {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(105,93,154,.16),
-          rgba(49,64,109,.07) 28%,
-          transparent 65%
-        ),
-        linear-gradient(160deg,#090b12,#05060a 48%,#080810);
-    }
-
-    main {
-      position: relative;
-      min-height: 100svh;
-      padding: 12vh 24px 80px;
-    }
-
-    .introduction {
-      position: relative;
-      z-index: 1;
-      width: min(700px,100%);
-      margin: 0 auto;
-      text-align: center;
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      color: var(--muted);
-      font-family: var(--font-correspondence);
-      font-size: .7rem;
-      letter-spacing: .14em;
-    }
-
-    h1 {
-      margin: 24px 0;
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem,8vw,7rem);
-      font-weight: 400;
-      letter-spacing: -.05em;
-      line-height: 1;
-    }
-
-    .introduction p {
-      max-width: 460px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .goods-field {
-      position: relative;
-      width: min(1100px,100%);
-      height: min(55vh,540px);
-      min-height: 320px;
-      margin: 40px auto 0;
-    }
-
-    .good-star {
-      position: absolute;
-      width: 44px;
-      height: 44px;
-      transform: translate(-50%,-50%);
-      border: 0;
-      border-radius: 50%;
-      background: transparent;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-    }
-
-    .good-star::before {
-      content: "";
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--ink);
-      box-shadow:
-        0 0 10px rgba(244,241,232,.7),
-        0 0 26px rgba(143,184,199,.35);
-      transition: transform .4s ease,box-shadow .4s ease;
-    }
-
-    .good-star:hover::before,
-    .good-star:focus-visible::before {
-      transform: scale(1.8);
-      box-shadow:
-        0 0 14px rgba(244,241,232,.9),
-        0 0 34px rgba(143,184,199,.6);
-    }
-
-    .good-star:focus-visible {
-      outline: 1px solid var(--muted);
-      outline-offset: 3px;
-    }
-
-    .good-star[aria-pressed="true"]::before {
-      transform: scale(1.5);
-    }
-
-    .good-detail[hidden] { display: none; }
-
-    .good-detail {
-      position: relative;
-      width: min(520px,calc(100% - 48px));
-      margin: -10px auto 80px;
-      padding: 36px;
-      border: 1px solid rgba(244,241,232,.18);
-      border-radius: 12px;
-      background: rgba(5,6,10,.94);
-    }
-
-    .good-detail h2 {
-      margin: 12px 0;
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 400;
-    }
-
-    .good-detail p {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .detail-close {
-      position: absolute;
-      top: 12px;
-      right: 18px;
-      border: 0;
-      background: transparent;
-      color: var(--ink);
-      font-size: 1.7rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 600px) {
-      main { padding-top: 15vh; }
-      .goods-field { height: 45vh; }
-      .good-detail { padding: 28px; }
-    }
-  </style>
-
-  <link rel="stylesheet" href="field-guide.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#05060a">
+<title>Acquire Goods — Good for Nothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#f4f1e8;--muted:rgba(244,241,232,.62);--sky:#8FB8C7;--teal:#4F8F8A;--lichen:#84966B;--terra:#B66F52;--salt:#D0A19A;--display:"EB Garamond",serif;--body:"Source Sans 3",sans-serif;--ui:"Inter",sans-serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#05060a;color:var(--ink);font-family:var(--body)}
+button,a{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible{outline:2px solid var(--sky);outline-offset:5px}
+.cosmos{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(circle at 84% 18%,rgba(169,122,93,.07),transparent 28%),linear-gradient(160deg,#090b12,#05060a 48%,#080810)}
+.background-star{position:absolute;border-radius:50%;background:#fff;pointer-events:none}
+main{min-height:100svh;padding:12vh 24px 10vh;position:relative}
+.introduction{max-width:720px;margin:0 auto;text-align:center}
+.eyebrow{font:400 .7rem var(--mono);letter-spacing:.14em;color:var(--muted)}
+h1{font:400 clamp(3.6rem,8vw,7rem)/1 var(--display);letter-spacing:-.05em;margin:24px 0}
+.introduction p{max-width:460px;margin:0 auto;color:var(--muted);font-size:1.1rem;line-height:1.6}
+.field{width:min(1150px,100%);height:clamp(410px,57vh,650px);position:relative;margin:3vh auto 0}
+.galaxy{position:absolute;width:clamp(140px,21vw,260px);height:clamp(135px,19vw,230px);transform:translate(-50%,-50%);border:0;background:none;color:var(--ink);cursor:pointer;padding:0;isolation:isolate}
+.galaxy .cloud{position:absolute;inset:0;filter:blur(18px);opacity:.55;transition:opacity .7s ease,transform .7s ease;transform:scale(.88);border-radius:50%;background:radial-gradient(ellipse at 52% 49%,var(--cloud),transparent 63%);mix-blend-mode:screen}
+.galaxy .cloud.secondary{filter:blur(27px);opacity:.24;transform:rotate(-28deg) scale(.9,.55);background:radial-gradient(ellipse,var(--accent),transparent 70%)}
+.galaxy .stars{position:absolute;inset:0;transition:transform .8s ease,filter .8s ease}
+.galaxy .point{position:absolute;border-radius:50%;background:var(--ink);pointer-events:none}
+.galaxy .galaxy-name{position:absolute;left:50%;bottom:-13px;transform:translateX(-50%);white-space:nowrap;font:400 .71rem var(--mono);letter-spacing:.15em;color:rgba(244,241,232,.78);text-shadow:0 2px 10px #05060a;transition:color .4s ease,letter-spacing .4s ease}
+.galaxy .state{position:absolute;left:50%;bottom:-32px;transform:translateX(-50%);white-space:nowrap;font:400 .57rem var(--mono);letter-spacing:.1em;color:rgba(244,241,232,.36)}
+.galaxy:not(:disabled):hover .cloud,.galaxy:not(:disabled):focus-visible .cloud{opacity:.95;transform:scale(1.08)}
+.galaxy:not(:disabled):hover .stars,.galaxy:not(:disabled):focus-visible .stars{transform:scale(1.06);filter:drop-shadow(0 0 5px rgba(244,241,232,.35))}
+.galaxy:not(:disabled):hover .galaxy-name,.galaxy:not(:disabled):focus-visible .galaxy-name{color:#fff;letter-spacing:.2em}
+.galaxy:disabled{cursor:default;opacity:.55}
+.galaxy:disabled .cloud{opacity:.32}
+.galaxy.games{left:22%;top:43%;--cloud:rgba(79,143,138,.55);--accent:rgba(143,184,199,.6)}
+.galaxy.books{left:72%;top:30%;--cloud:rgba(208,161,154,.48);--accent:rgba(182,111,82,.55)}
+.galaxy.uniform{left:55%;top:77%;--cloud:rgba(132,150,107,.45);--accent:rgba(143,184,199,.35)}
+.field-hint{font:400 .65rem var(--mono);letter-spacing:.09em;color:rgba(244,241,232,.38);text-align:center;margin:0}
+.overlay[hidden]{display:none}
+.overlay{position:fixed;inset:0;z-index:20;overflow-y:auto;overscroll-behavior:contain;background:rgba(5,6,10,.83);padding:clamp(10px,3vw,34px);animation:arrive .42s ease both}
+@keyframes arrive{from{opacity:0}to{opacity:1}}
+.paper{position:relative;isolation:isolate;width:min(1080px,100%);min-height:calc(100svh - 68px);margin:auto;color:#25221f;background:linear-gradient(to bottom,#f4f1e8 0%,#eee8dc 28%,#e9e1d2 72%,#e4d8c7 100%);padding:clamp(26px,6vw,76px);box-shadow:0 24px 95px rgba(0,0,0,.45)}
+.paper:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none;background-image:repeating-linear-gradient(0deg,rgba(91,68,47,.035) 0px,rgba(91,68,47,.035) 1px,transparent 1px,transparent 4px),repeating-linear-gradient(90deg,rgba(91,68,47,.025) 0px,rgba(91,68,47,.025) 1px,transparent 1px,transparent 6px)}
+.paper:after{content:"";position:absolute;right:-10px;top:185px;width:100px;height:100px;border-radius:50%;background:rgba(182,111,82,.13);z-index:-1}
+.paper-header{display:flex;justify-content:space-between;align-items:start;gap:18px}
+.paper .eyebrow{color:#746c60}
+.paper h2{font:400 clamp(3.6rem,7vw,6.4rem)/1 var(--display);letter-spacing:-.04em;margin:22px 0 22px}
+.close{width:42px;height:42px;border:1px solid rgba(37,34,31,.28);background:transparent;color:#25221f;font-size:26px;cursor:pointer;flex-shrink:0;transition:background .25s}
+.close:hover{background:rgba(37,34,31,.07)}
+.paper-intro{max-width:620px;font-size:1.15rem;line-height:1.65;margin:0 0 62px}
+.paper-rule{height:1px;background:rgba(37,34,31,.22);margin-bottom:30px}
+.catalogue-label{font:.69rem var(--mono);letter-spacing:.12em;color:#746c60;margin-bottom:20px}
+.entry{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1fr);gap:clamp(20px,4vw,46px);padding:26px 0 50px;border-bottom:1px solid rgba(37,34,31,.23)}
+.preview{min-height:260px;background:#080b13;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.preview:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(5,6,10,.18),transparent 35%)}
+.preview img{display:block;width:100%;height:100%;min-height:260px;object-fit:cover;object-position:center}
+.entry-number{font:.67rem var(--mono);letter-spacing:.1em;color:#746c60}
+.entry h3{font:400 clamp(2.2rem,3.5vw,3.1rem)/1.05 var(--display);margin:16px 0 8px}
+.subtitle{font-style:italic;font-family:var(--display);font-size:1.28rem;margin:0 0 20px}
+.entry-copy{font-size:1.04rem;line-height:1.62;max-width:390px;margin:0 0 24px}
+.status{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px}
+.status span{font:.65rem var(--mono);letter-spacing:.07em;padding:7px 9px;border:1px solid rgba(37,34,31,.35)}
+.launch{display:inline-block;color:#25221f;text-decoration:none;border-bottom:1px solid #25221f;padding:0 0 5px;font:500 .89rem var(--ui)}
+.launch:hover{color:#4F8F8A;border-color:#4F8F8A}
+.future{margin-top:44px;color:#746c60;font-size:.95rem;line-height:1.5}
+body.modal-open{overflow:hidden}
+@media(max-width:700px){main{padding-top:13vh}.field{height:490px}.galaxy.games{left:25%;top:32%}.galaxy.books{left:76%;top:43%}.galaxy.uniform{left:46%;top:78%}.galaxy{width:155px;height:155px}.entry{grid-template-columns:1fr}.preview{min-height:210px}.paper-intro{margin-bottom:36px}.paper{min-height:calc(100svh - 20px)}.overlay{padding:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+<link rel="stylesheet" href="field-guide.css">
 </head>
-
-<body>
-  <div class="cosmos" aria-hidden="true"></div>
-
-  <main>
-    <header class="introduction">
-      <div class="eyebrow">GFNU / WEST</div>
-      <h1>Acquire Goods</h1>
-      <p>
-        Things to encounter, take away, put to work,
-        or pass along.
-      </p>
-    </header>
-
-    <div
-      class="goods-field"
-      id="goods-field"
-      aria-label="Available goods"
-    ></div>
-
-    <section class="good-detail" id="good-detail" hidden>
-      <button
-        class="detail-close"
-        type="button"
-        aria-label="Close artifact"
-      >×</button>
-      <div class="eyebrow" id="good-type"></div>
-      <h2 id="good-title"></h2>
-      <p id="good-description"></p>
-    </section>
-  </main>
-
-  <script>
-    // Each entry creates exactly one star.
-    // Add or remove goods here.
-    const goods = [
-      {
-        name: "Spiral Engine",
-        type: "INTERACTIVE FORMAT",
-        description: "An interactive format for exploration."
-      },
-      {
-        name: "Volume 0",
-        type: "PUBLICATION",
-        description: "An inquiry into how inquiry proceeds."
-      }
-    ];
-
-    const field = document.querySelector("#goods-field");
-    const detail = document.querySelector("#good-detail");
-    const detailTitle = document.querySelector("#good-title");
-    const detailType = document.querySelector("#good-type");
-    const detailDescription = document.querySelector("#good-description");
-    const closeDetail = document.querySelector(".detail-close");
-
-    let activeStar = null;
-
-    function randomPositions(count) {
-      const positions = [];
-
-      for (let i = 0; i < count; i++) {
-        let position;
-        let attempts = 0;
-
-        do {
-          position = {
-            x: 8 + Math.random() * 84,
-            y: 10 + Math.random() * 80
-          };
-          attempts++;
-        } while (
-          attempts < 100 &&
-          positions.some(other =>
-            Math.hypot(position.x - other.x, position.y - other.y) < 18
-          )
-        );
-
-        positions.push(position);
-      }
-
-      return positions;
-    }
-
-    const positions = randomPositions(goods.length);
-
-    goods.forEach((good, index) => {
-      const star = document.createElement("button");
-      const position = positions[index];
-
-      star.type = "button";
-      star.className = "good-star";
-      star.style.left = position.x + "%";
-      star.style.top = position.y + "%";
-      star.setAttribute("aria-label", "Explore " + good.name);
-      star.setAttribute("aria-pressed", "false");
-      star.title = good.name;
-
-      star.addEventListener("click", () => {
-        if (activeStar) {
-          activeStar.setAttribute("aria-pressed", "false");
-        }
-
-        activeStar = star;
-        star.setAttribute("aria-pressed", "true");
-
-        detailType.textContent = good.type;
-        detailTitle.textContent = good.name;
-        detailDescription.textContent = good.description;
-        detail.hidden = false;
-        detail.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest"
-        });
-      });
-
-      field.appendChild(star);
-    });
-
-    closeDetail.addEventListener("click", () => {
-      detail.hidden = true;
-
-      if (activeStar) {
-        activeStar.setAttribute("aria-pressed", "false");
-        activeStar.focus();
-        activeStar = null;
-      }
-    });
-  </script>
-
-  <script src="field-guide.js"></script>
-</body>
-</html>
+<body data-guide-page="goods">
+<div class="cosmos" id="cosmos" aria-hidden="true"></div>
+<main>
+<header class="introduction"><div class="eyebrow">GFNU / WEST</div><h1>Acquire Goods</h1><p>Things to encounter, take away, put to work,<br>or pass along.</p></header>
+<div class="field" aria-label="Goods collections">
+<button type="button" class="galaxy games" data-galaxy="games" aria-haspopup="dialog" aria-label="Explore Games">
+<span class="cloud"></span><span class="cloud secondary"></span><span class="stars" aria-hidden="true"></span><span class="galaxy-name">GAMES</span></button>
+<button type="button" class="galaxy books" disabled aria-label="Books, coming soon">
+<span class="cloud"></span><span class="cloud secondary"></span><span class="stars" aria-hidden="true"></span><span class="galaxy-name">BOOKS</span><span class="state">COMING SOON</span></button>
+<button type="button" class="galaxy uniform" disabled aria-label="Uniform, coming soon">
+<span class="cloud"></span><span class="cloud secondary"></span><span class="stars" aria-hidden="true"></span><span class="galaxy-name">UNIFORM</span><span class="state">COMING SOON</span></button>
+</div><p class="field-hint">SELECT A GALAXY TO EXPLORE</p>
+</main>
+<div class="overlay" id="catalogue" role="dialog" aria-modal="true" aria-labelledby="catalogue-title" hidden>
+<section class="paper">
+<div class="paper-header"><div><div class="eyebrow">GFNU / ACQUIRE GOODS / 01</div><h2 id="catalogue-title">Games</h2></div><button class="close" id="close-catalogue" aria-label="Close catalogue" type="button">×</button></div>
+<p class="paper-intro">Games to play, investigate, and occasionally misunderstand. Each has its own rules. What happens within them is partly up to you.</p>
+<div class="paper-rule"></div><div class="catalogue-label">AVAILABLE GOODS / GAMES</div>
+<article class="entry">
+<div class="preview"><img src="assets/spiral-engine-catalogue-preview.webp" alt="Actual Spiral Engine game board, showing the concentric card arrangement and central black hole" loading="lazy"></div>
+<div><div class="entry-number">GAME / 001</div><h3>The Spiral Engine</h3><p class="subtitle">A game where everyone wins.</p>
+<p class="entry-copy">Three players. Seventy-four cards. One shared objective and an unreasonable number of paths to get there.</p>
+<div class="status"><span>PLAYABLE</span><span>FREE TO PLAY</span></div>
+<a class="launch" href="spiral-engine-GfNU.html" target="_blank" rel="noopener noreferrer">Open game ↗</a>
+</div></article>
+<p class="future">Neutral edition and downloadable game rules are planned for a future release.</p>
+</section></div>
+<script>
+(function(){
+let seed=93471;
+function rnd(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+const cosmos=document.getElementById('cosmos');
+for(let i=0;i<140;i++){const s=document.createElement('span');s.className='background-star';const size=rnd()<.9?rnd()*1.2+.3:rnd()*1.8+1.2;s.style.cssText=`width:${size}px;height:${size}px;left:${rnd()*100}%;top:${rnd()*100}%;opacity:${rnd()*.65+.15}`;cosmos.appendChild(s)}
+document.querySelectorAll('.galaxy').forEach((g,gi)=>{
+const container=g.querySelector('.stars');const n=gi===0?180:140;
+for(let i=0;i<n;i++){const a=rnd()*Math.PI*2;const r=Math.sqrt(-2*Math.log(Math.max(.00001,1-rnd())));const x=50+Math.cos(a)*r*15;const y=50+Math.sin(a)*r*10+(x-50)*.18;if(x<2||x>98||y<3||y>97)continue;
+const s=document.createElement('span');s.className='point';const size=rnd()<.94?.45+rnd()*1.15:1.8+rnd()*1.5;s.style.cssText=`left:${x}%;top:${y}%;width:${size}px;height:${size}px;opacity:${.12+rnd()*.72};box-shadow:0 0 ${rnd()*7}px rgba(244,241,232,.4)`;container.appendChild(s)}
+});
+const modal=document.getElementById('catalogue'),close=document.getElementById('close-catalogue');let trigger=null;
+function open(g){trigger=g;modal.hidden=false;document.body.classList.add('modal-open');modal.scrollTop=0;close.focus()}
+function shut(){modal.hidden=true;document.body.classList.remove('modal-open');if(trigger)trigger.focus()}
+document.querySelector('[data-galaxy="games"]').addEventListener('click',e=>open(e.currentTarget));
+close.addEventListener('click',shut);
+modal.addEventListener('click',e=>{if(e.target===modal)shut()});
+document.addEventListener('keydown',e=>{if(modal.hidden)return;if(e.key==='Escape')shut();if(e.key==='Tab'){const items=[...modal.querySelectorAll('button:not([disabled]),a[href]')];const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+})();
+</script>
+<script src="field-guide.js"></script>
+</body></html>
