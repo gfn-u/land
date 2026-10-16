@@ -71,7 +71,7 @@
 }
  .letter {
    width: min(560px, calc(100% - 48px));
-   margin: 120px auto;
+   margin: 0;
    padding: 40px;
    background: var(--ink);
    color: #05060a;
@@ -103,6 +103,18 @@
   color: var(--ink);
   font-family: var(--font-body);
 }
+      .participation-space {
+  display: none;
+
+  width: min(1200px, calc(100% - 48px));
+  margin: 100px auto;
+
+  position: relative;
+}
+
+.participation-space.open {
+  display: block;
+}
   </style>
   <link rel="stylesheet" href="field-guide.css">
 </head>
@@ -123,7 +135,8 @@
 <button class="im-here">
   I'm here
 </button>
-<div class="letter">
+<section class="participation-space">
+  <div class="letter">
   <p>
     Relevant information will be shared by GfN using the interweb,
     for we lack sufficient numbers of carrier pigeons in today's world
@@ -154,6 +167,8 @@
     Please be patient with us while we await ignition (aka, we are still building the cell phone server).
   </p>
 </div>
+    </div>
+</section>
   <p class="out-of-reach">
   If you are out of reach, please reload.
 </p>
@@ -161,7 +176,11 @@
  const cosmos = document.querySelector(".cosmos");
  const imHere = document.querySelector(".im-here");
  const letter = document.querySelector(".letter");
-    imHere.addEventListener("click", () => {
+const participationSpace =
+  document.querySelector(".participation-space");
+
+imHere.addEventListener("click", () => {
+  participationSpace.classList.add("open");
   letter.classList.add("open");
 });
  const star = document.createElement("span");
