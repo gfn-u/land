@@ -18,6 +18,9 @@
   --font-body: "Source Sans 3", sans-serif;
   --font-ui: "Inter", sans-serif;
   --font-correspondence: "IBM Plex Mono", monospace;
+  {
+  box-sizing: border-box;
+}
 }
   .cosmos{
     position:fixed;
@@ -68,6 +71,14 @@
 }
 .im-here:hover {
   color: var(--ink);
+}
+      .letter h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin: 0 0 36px;
 }
  .letter {
    width: min(560px, calc(100% - 48px));
@@ -131,7 +142,6 @@
   margin-top: 90px;
 
   padding: 30px;
-  background: #e9e1d2;
   color: #25221f;
   border-radius: var(--radius);
 }
@@ -139,8 +149,8 @@
 /* Small archival label */
 .block-label {
   font-family: var(--font-correspondence);
-  font-size: .7rem;
-  letter-spacing: .1em;
+  font-size: .75rem;
+  letter-spacing: .12em;
   color: #746c60;
 }
 
@@ -188,6 +198,36 @@
     margin-top: 0;
   }
 }
+      .contact-block {
+  position: relative;
+  isolation: isolate;
+  background: #eee8dc;
+  border: 1px solid rgba(37, 34, 31, .22);
+}
+
+.contact-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(91, 68, 47, .035) 0px,
+      rgba(91, 68, 47, .035) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(91, 68, 47, .025) 0px,
+      rgba(91, 68, 47, .025) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
   </style>
   <link rel="stylesheet" href="field-guide.css">
 </head>
@@ -210,6 +250,7 @@
 </button>
 <section class="participation-space">
   <div class="letter">
+    <h2>Welcome</h2>
   <p>
     Relevant information will be shared by GfN using the interweb,
     for we lack sufficient numbers of carrier pigeons in today's world
@@ -242,7 +283,7 @@
   </div>
 
   <article class="contact-block">
-    <span class="block-label">CORRESPONDENCE / 001</span>
+    <span class="block-label">001 / CORRESPONDENCE</span>
     <h2>Contact us</h2>
     <p>
       Have an idea, a question, an invitation, or something
