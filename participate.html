@@ -17,10 +17,11 @@
   --font-display: "EB Garamond", serif;
   --font-body: "Source Sans 3", sans-serif;
   --font-ui: "Inter", sans-serif;
-  --font-correspondence: "IBM Plex Mono", monospace;
-  *{
-  box-sizing: border-box;
+   --font-correspondence: "IBM Plex Mono", monospace;
 }
+
+* {
+  box-sizing: border-box;
 }
   .cosmos{
     position:fixed;
@@ -297,6 +298,82 @@
     width: 100%;
   }
 }
+      .welcome-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.welcome-form label {
+  font-size: .78rem;
+  margin-top: 8px;
+}
+
+.welcome-form input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid rgba(37, 34, 31, .3);
+  border-radius: 4px;
+  background: #eee8dc;
+  color: #25221f;
+  font: inherit;
+}
+
+.welcome-form input:disabled {
+  opacity: .7;
+}
+
+.welcome-form button {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #25221f;
+  background: #25221f;
+  color: #f4f1e8;
+  font-family: var(--font-ui);
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.welcome-form-status {
+  font-size: .75rem;
+  color: #746c60;
+}
+      .participation-space .letter {
+  position: relative;
+  cursor: pointer;
+  transition: opacity 1.5s ease, width .5s ease;
+}
+
+.participation-space .letter.expanded {
+  grid-column: 1 / span 8;
+  width: 100%;
+  z-index: 6;
+  cursor: default;
+}
+
+.letter-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  color: #25221f;
+  font-family: var(--font-ui);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.letter-close[hidden] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .participation-space .letter.expanded {
+    grid-column: 1;
+    width: 100%;
+  }
+}
   </style>
   <link rel="stylesheet" href="field-guide.css">
 </head>
@@ -318,8 +395,15 @@
   I'm here
 </button>
 <section class="participation-space">
-  <div class="letter">
-    <h2>Welcome</h2>
+<div class="letter">
+  <button
+    class="letter-close"
+    type="button"
+    aria-label="Close expanded Welcome letter"
+    hidden
+  >×</button>
+
+  <h2>Welcome</h2>
   <p>
     Relevant information will be shared by GfN using the interweb,
     for we lack sufficient numbers of carrier pigeons in today's world
@@ -342,13 +426,40 @@
   <p>
     Welcome to our creative process. Let us know where to find you:
   </p>
+    <form class="welcome-form">
+  <label for="welcome-name">Your name</label>
+  <input
+    id="welcome-name"
+    type="text"
+    name="name"
+    placeholder="How should we address you?"
+    autocomplete="name"
+    disabled
+  >
+
+  <label for="welcome-email">Your email address</label>
+  <input
+    id="welcome-email"
+    type="email"
+    name="email"
+    placeholder="you@example.com"
+    autocomplete="email"
+    disabled
+  >
+
+  <button type="submit" disabled>
+    Join the not-a-mailing-list
+  </button>
+
+  <p class="welcome-form-status">
+    Registration unavailable. Please be patient with us while we await ignition (aka, we are still building the cell phone server).
+  </p>
+</form>
   <p>
     — GFN<br>
     Head MacGyver at GfNU
   </p>
-  <p>
-    Please be patient with us while we await ignition (aka, we are still building the cell phone server).
-  </p>
+ 
   </div>
 
  <article class="contact-block">
@@ -361,7 +472,7 @@
 
 <p>
   There are many ways to begin something together.
-  Here are a few possibilities.
+  Here are a few possibilities of GfNUs services.
 </p>
 
 <details class="service">
@@ -375,7 +486,7 @@
 <details class="service">
   <summary>The GFnU Truck</summary>
   <p>
-    Request services the GfNU Truck. 
+    Request event production services of the GfNU Truck & Management. 
   </p>
 </details>
 
@@ -460,6 +571,7 @@ function closeContact() {
 
 contactBlock.addEventListener("click", () => {
   if (!contactBlock.classList.contains("expanded")) {
+    closeWelcome();
     contactBlock.classList.add("expanded");
     contactClose.hidden = false;
   }
@@ -476,6 +588,35 @@ document.addEventListener("click", (event) => {
     !contactBlock.contains(event.target)
   ) {
     closeContact();
+  }
+});
+    const welcomeLetter = document.querySelector(".letter");
+const letterClose = document.querySelector(".letter-close");
+
+function closeWelcome() {
+  welcomeLetter.classList.remove("expanded");
+  letterClose.hidden = true;
+}
+
+welcomeLetter.addEventListener("click", () => {
+  if (!welcomeLetter.classList.contains("expanded")) {
+    closeContact();
+    welcomeLetter.classList.add("expanded");
+    letterClose.hidden = false;
+  }
+});
+
+letterClose.addEventListener("click", (event) => {
+  event.stopPropagation();
+  closeWelcome();
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    welcomeLetter.classList.contains("expanded") &&
+    !welcomeLetter.contains(event.target)
+  ) {
+    closeWelcome();
   }
 });
   </script>
