@@ -38,14 +38,15 @@ h1{font:400 clamp(3.6rem,8vw,7rem)/1 var(--display);letter-spacing:-.05em;margin
 .galaxy .point{position:absolute;border-radius:50%;background:var(--ink);pointer-events:none}
 .galaxy .galaxy-name{position:absolute;left:50%;bottom:-13px;transform:translateX(-50%);white-space:nowrap;font:400 .71rem var(--mono);letter-spacing:.15em;color:rgba(244,241,232,.78);text-shadow:0 2px 10px #05060a;transition:color .4s ease,letter-spacing .4s ease}
 .galaxy .state{position:absolute;left:50%;bottom:-32px;transform:translateX(-50%);white-space:nowrap;font:400 .57rem var(--mono);letter-spacing:.1em;color:rgba(244,241,232,.36)}
-.galaxy:not(:disabled):hover .cloud,.galaxy:not(:disabled):focus-visible .cloud{opacity:.95;transform:scale(1.08)}
-.galaxy:not(:disabled):hover .stars,.galaxy:not(:disabled):focus-visible .stars{transform:scale(1.06);filter:drop-shadow(0 0 5px rgba(244,241,232,.35))}
+.galaxy:not(:disabled):hover .cloud,.galaxy:not(:disabled):focus-visible .cloud{opacity:.55;transform:scale(.88)}
+.galaxy:not(:disabled):hover .stars,.galaxy:not(:disabled):focus-visible .stars{transform:none;filter:brightness(1.75)}
+.galaxy:not(:disabled):hover .point,.galaxy:not(:disabled):focus-visible .point{opacity:1!important;box-shadow:0 0 2px rgba(244,241,232,.2)}
 .galaxy:not(:disabled):hover .galaxy-name,.galaxy:not(:disabled):focus-visible .galaxy-name{color:#fff;letter-spacing:.2em}
 .galaxy:disabled{cursor:default;opacity:.55}
 .galaxy:disabled .cloud{opacity:.32}
-.galaxy.games{left:22%;top:43%;--cloud:rgba(79,143,138,.55);--accent:rgba(143,184,199,.6)}
-.galaxy.books{left:72%;top:30%;--cloud:rgba(208,161,154,.48);--accent:rgba(182,111,82,.55)}
-.galaxy.uniform{left:55%;top:77%;--cloud:rgba(132,150,107,.45);--accent:rgba(143,184,199,.35)}
+.galaxy.games{left:15%;top:36%;--cloud:rgba(79,143,138,.55);--accent:rgba(143,184,199,.6)}
+.galaxy.books{left:83%;top:33%;--cloud:rgba(208,161,154,.48);--accent:rgba(182,111,82,.55)}
+.galaxy.uniform{left:51%;top:73%;--cloud:rgba(132,150,107,.45);--accent:rgba(143,184,199,.35)}
 .field-hint{padding-top:70px;font:400 .65rem var(--mono);letter-spacing:.09em;color:rgba(244,241,232,.38);text-align:center;margin:0}
 .overlay[hidden]{display:none}
 .overlay{position:fixed;inset:0;z-index:20;overflow-y:auto;overscroll-behavior:contain;background:rgba(5,6,10,.83);padding:clamp(10px,3vw,34px);animation:arrive .42s ease both}
@@ -75,7 +76,7 @@ h1{font:400 clamp(3.6rem,8vw,7rem)/1 var(--display);letter-spacing:-.05em;margin
 .launch:hover{color:#4F8F8A;border-color:#4F8F8A}
 .future{margin-top:44px;color:#746c60;font-size:.95rem;line-height:1.5}
 body.modal-open{overflow:hidden}
-@media(max-width:700px){main{padding-top:13vh}.field{height:490px}.galaxy.games{left:25%;top:32%}.galaxy.books{left:76%;top:43%}.galaxy.uniform{left:46%;top:78%}.galaxy{width:155px;height:155px}.entry{grid-template-columns:1fr}.preview{min-height:210px}.paper-intro{margin-bottom:36px}.paper{min-height:calc(100svh - 20px)}.overlay{padding:10px}}
+@media(max-width:700px){main{padding-top:13vh}.field{height:490px}.galaxy.games{left:23%;top:28%}.galaxy.books{left:78%;top:38%}.galaxy.uniform{left:48%;top:76%}.galaxy{width:155px;height:155px}.entry{grid-template-columns:1fr}.preview{min-height:210px}.paper-intro{margin-bottom:36px}.paper{min-height:calc(100svh - 20px)}.overlay{padding:10px}}
 @media(prefers-reduced-motion:reduce){.galaxy,.galaxy .cloud{animation:none!important}.page-glow{display:none}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 <link rel="stylesheet" href="field-guide.css">
