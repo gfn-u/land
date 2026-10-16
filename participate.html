@@ -270,8 +270,7 @@
 }
 
 .contact-block.expanded {
-  grid-column: 7 / span 6;
-  width: calc(100% + 32px);
+  width: calc(150% + 32px);
   z-index: 5;
   cursor: default;
 }
@@ -346,8 +345,7 @@
 }
 
 .participation-space .letter.expanded {
-  grid-column: 1 / span 8;
-  width: 100%;
+  width: 135%;
   z-index: 6;
   cursor: default;
 }
@@ -371,6 +369,12 @@
 @media (max-width: 700px) {
   .participation-space .letter.expanded {
     grid-column: 1;
+    width: 100%;
+  }
+}
+      @media (max-width: 700px) {
+  .contact-block.expanded,
+  .participation-space .letter.expanded {
     width: 100%;
   }
 }
