@@ -1,0 +1,141 @@
+ width: 100%;
+  min-width: 0;
+  padding: 28px;
+
+  background: #eee8dc;
+  color: #25221f;
+
+  border: 1px solid rgba(37, 34, 31, .15);
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+/* Game preview */
+
+.game-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 260px;
+  overflow: hidden;
+
+  background: #080b13;
+}
+
+.game-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    0deg,
+    rgba(5, 6, 10, .18),
+    transparent 35%
+  );
+}
+
+.game-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Game information */
+
+.game-information {
+  min-width: 0;
+}
+
+.game-number {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .67rem;
+  letter-spacing: .1em;
+  color: #746c60;
+}
+
+.game-artifact h3 {
+  margin: 16px 0 8px;
+
+  font-family: "EB Garamond", serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.game-subtitle {
+  margin: 0 0 20px;
+
+  font-family: "EB Garamond", serif;
+  font-size: 1.28rem;
+  font-style: italic;
+}
+
+.game-description {
+  max-width: 390px;
+  margin: 0 0 24px;
+
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.04rem;
+  line-height: 1.62;
+}
+
+/* Availability labels */
+
+.game-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 24px;
+}
+
+.game-status span {
+  padding: 7px 9px;
+
+  border: 1px solid rgba(37, 34, 31, .35);
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .65rem;
+  letter-spacing: .07em;
+}
+
+/* Link to playable game */
+
+.game-launch {
+  display: inline-block;
+  padding-bottom: 5px;
+
+  color: #25221f;
+  border-bottom: 1px solid #25221f;
+  text-decoration: none;
+
+  font-family: "Inter", sans-serif;
+  font-size: .89rem;
+  font-weight: 500;
+}
+
+.game-launch:hover,
+.game-launch:focus-visible {
+  color: #4f8f8a;
+  border-color: #4f8f8a;
+}
+
+/* Adapt the artifact to narrower spaces */
+
+@media (max-width: 700px) {
+  .game-artifact {
+    grid-template-columns: 1fr;
+  }
+
+  .game-preview,
+  .game-preview img {
+    min-height: 210px;
+  }
+}
