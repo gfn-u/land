@@ -1,0 +1,167 @@
+/*
+  GOOD FOR NOTHING UNIVERSE
+  Shared visual language
+
+  Artifacts retain their individual identities.
+  The brand system provides common choices
+  and consistent interface controls.
+*/
+
+:root {
+  /* Typography */
+  --gfn-font-display: "EB Garamond", serif;
+  --gfn-font-body: "Source Sans 3", sans-serif;
+  --gfn-font-ui: "Inter", sans-serif;
+  --gfn-font-mono: "IBM Plex Mono", monospace;
+
+ /* Foundational colors */
+--gfn-cosmos: #05060a;
+--gfn-cream: #eee8dc;
+--gfn-paper: #f4f1e8;
+--gfn-ink: #25221f;
+
+/* Existing universe palette */
+--gfn-sky: #8fb8c7;
+--gfn-teal: #4f8f8a;
+--gfn-lichen: #84966b;
+--gfn-terracotta: #b66f52;
+--gfn-salt: #d0a19a;
+--gfn-purple: #695d9a;
+
+/* Surface variations */
+--gfn-surface-dark: #151b25;
+--gfn-surface-lichen: #d9dfcf;
+--gfn-surface-terracotta: #dfb8a7;
+
+  /* Shapes */
+  --gfn-radius: 12px;
+  --gfn-radius-small: 8px;
+
+  /* Boundaries */
+  --gfn-border-light: rgba(37, 34, 31, .15);
+  --gfn-border-dark: rgba(244, 241, 232, .28);
+
+  /* Motion */
+  --gfn-transition: 0.35s ease;
+}
+
+/*
+  SURFACE OPTIONS
+
+  These are choices, not mandatory backgrounds.
+  Each artifact can select its own surface.
+*/
+
+.gfn-surface-paper {
+  background: var(--gfn-paper);
+  color: var(--gfn-ink);
+  border: 1px solid var(--gfn-border-light);
+  border-radius: var(--gfn-radius);
+}
+
+.gfn-surface-cream {
+  background: var(--gfn-cream);
+  color: var(--gfn-ink);
+  border: 1px solid var(--gfn-border-light);
+  border-radius: var(--gfn-radius);
+}
+
+.gfn-surface-dark {
+  background: #151b25;
+  color: var(--gfn-paper);
+  border: 1px solid var(--gfn-border-dark);
+  border-radius: var(--gfn-radius);
+}
+
+.gfn-surface-lichen {
+  background: #d9dfcf;
+  color: var(--gfn-ink);
+  border: 1px solid var(--gfn-border-light);
+  border-radius: var(--gfn-radius);
+}
+
+.gfn-surface-terracotta {
+  background: #dfb8a7;
+  color: var(--gfn-ink);
+  border: 1px solid var(--gfn-border-light);
+  border-radius: var(--gfn-radius);
+}
+
+/* Optional subtle paper texture */
+
+.gfn-texture-paper {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(91, 68, 47, .025) 0px,
+      rgba(91, 68, 47, .025) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(91, 68, 47, .018) 0px,
+      rgba(91, 68, 47, .018) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/*
+  SHARED CLOSE CONTROL
+
+  Use this class for artifact-close buttons
+  and space-close buttons.
+*/
+
+.gfn-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 20;
+
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  border: 1px solid currentColor;
+  border-radius: var(--gfn-radius);
+
+  background: transparent;
+  color: inherit;
+
+  font-family: var(--gfn-font-ui);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+
+  cursor: pointer;
+  opacity: .75;
+
+  transition:
+    opacity var(--gfn-transition),
+    background var(--gfn-transition);
+}
+
+.gfn-close:hover {
+  opacity: 1;
+  background: rgba(128, 128, 128, .12);
+}
+
+.gfn-close:focus-visible {
+  outline: 2px solid var(--gfn-teal);
+  outline-offset: 4px;
+}
+
+.gfn-close[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gfn-close {
+    transition: none;
+  }
+}
