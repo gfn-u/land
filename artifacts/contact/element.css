@@ -1,0 +1,136 @@
+/*
+  CONTACT US
+  Artifact-specific appearance.
+*/
+
+.contact-block {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: 30px;
+
+  background: #eee8dc;
+  color: #25221f;
+  border: 1px solid rgba(37, 34, 31, .22);
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+/* Subtle archival paper texture */
+
+.contact-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(91, 68, 47, .035) 0px,
+      rgba(91, 68, 47, .035) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(91, 68, 47, .025) 0px,
+      rgba(91, 68, 47, .025) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+.contact-block.expanded {
+  cursor: default;
+}
+
+/* Archival label */
+
+.block-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .75rem;
+  letter-spacing: .12em;
+  color: #746c60;
+}
+
+/* Heading and correspondence */
+
+.contact-block h2 {
+  margin: 30px 0 12px;
+  font-family: "EB Garamond", serif;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.contact-block p {
+  line-height: 1.5;
+}
+
+/* Existing service disclosures */
+
+.service {
+  border-top: 1px solid rgba(37, 34, 31, .2);
+  padding: 15px 0;
+}
+
+.service summary {
+  cursor: pointer;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #25221f;
+}
+
+.service summary:hover {
+  color: #4f8f8a;
+}
+
+.service p {
+  margin: 16px 0 4px;
+  line-height: 1.6;
+}
+
+/* Invitation and email */
+
+.contact-invitation {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(37, 34, 31, .2);
+}
+
+.contact-email {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+
+  color: #345e59;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .85rem;
+
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+/* Close control */
+
+.contact-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+
+  border: none;
+  background: transparent;
+  color: #25221f;
+
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.contact-close[hidden] {
+  display: none;
+}
