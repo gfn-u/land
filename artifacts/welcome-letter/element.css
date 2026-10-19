@@ -1,0 +1,109 @@
+/*
+  WELCOME LETTER
+  Artifact-specific visual identity.
+*/
+
+.letter {
+  width: 100%;
+  margin: 0;
+  padding: 40px;
+
+  background: #f4f1e8;
+  color: #05060a;
+  border-radius: 12px;
+
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 1.5;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+.letter.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.letter h2 {
+  font-family: "EB Garamond", serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin: 0 0 36px;
+}
+
+/* Close control */
+
+.letter-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+
+  border: none;
+  background: transparent;
+  color: #25221f;
+
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.letter-close[hidden] {
+  display: none;
+}
+
+/* Registration form */
+
+.welcome-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.welcome-form label {
+  font-size: .78rem;
+  margin-top: 8px;
+}
+
+.welcome-form input {
+  width: 100%;
+  padding: 13px;
+
+  border: 1px solid rgba(37, 34, 31, .3);
+  border-radius: 4px;
+
+  background: #eee8dc;
+  color: #25221f;
+  font: inherit;
+}
+
+.welcome-form input:disabled {
+  opacity: .7;
+}
+
+.welcome-form button {
+  margin-top: 12px;
+  padding: 14px;
+
+  border: 1px solid #25221f;
+  background: #25221f;
+  color: #f4f1e8;
+
+  font-family: "Inter", sans-serif;
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.welcome-form-status {
+  font-size: .75rem;
+  color: #746c60;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter {
+    transition: none;
+  }
+}
