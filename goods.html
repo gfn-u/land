@@ -51,10 +51,24 @@ h1{font:400 clamp(3.6rem,8vw,7rem)/1 var(--display);letter-spacing:-.05em;margin
 .overlay[hidden]{display:none}
 .overlay{position:fixed;inset:0;z-index:20;overflow-y:auto;overscroll-behavior:contain;background:rgba(5,6,10,.83);padding:clamp(10px,3vw,34px);animation:arrive .42s ease both}
 @keyframes arrive{from{opacity:0}to{opacity:1}}
-.paper{position:relative;isolation:isolate;width:min(1080px,100%);min-height:calc(100svh - 68px);margin:auto;color:#25221f;background:linear-gradient(to bottom,#f4f1e8 0%,#eee8dc 28%,#e9e1d2 72%,#e4d8c7 100%);padding:clamp(26px,6vw,76px);box-shadow:0 24px 95px rgba(0,0,0,.45)}
+.paper {
+  position: relative;
+  isolation: isolate;
+  width: min(1080px, 100%);
+  min-height: calc(100svh - 68px);
+  margin: auto;
+  color: var(--ink);
+  background: transparent;
+  padding: clamp(26px, 6vw, 76px);
+  box-shadow: none;
+}
 .paper:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none;background-image:repeating-linear-gradient(0deg,rgba(91,68,47,.035) 0px,rgba(91,68,47,.035) 1px,transparent 1px,transparent 4px),repeating-linear-gradient(90deg,rgba(91,68,47,.025) 0px,rgba(91,68,47,.025) 1px,transparent 1px,transparent 6px)}
 .paper:after{content:"";position:absolute;right:-10px;top:185px;width:100px;height:100px;border-radius:50%;background:rgba(182,111,82,.13);z-index:-1}
-.paper-header{display:flex;justify-content:space-between;align-items:start;gap:18px}
+  .paper::before,
+.paper::after {
+  display: none;
+}
+  .paper-header{display:flex;justify-content:space-between;align-items:start;gap:18px}
 .paper .eyebrow{color:#746c60}
 .paper h2{font:400 clamp(3.6rem,7vw,6.4rem)/1 var(--display);letter-spacing:-.04em;margin:22px 0 22px}
 .close{width:42px;height:42px;border:1px solid rgba(37,34,31,.28);background:transparent;color:#25221f;font-size:26px;cursor:pointer;flex-shrink:0;transition:background .25s}
@@ -62,7 +76,36 @@ h1{font:400 clamp(3.6rem,8vw,7rem)/1 var(--display);letter-spacing:-.05em;margin
 .paper-intro{max-width:620px;font-size:1.15rem;line-height:1.65;margin:0 0 62px}
 .paper-rule{height:1px;background:rgba(37,34,31,.22);margin-bottom:30px}
 .catalogue-label{font:.69rem var(--mono);letter-spacing:.12em;color:#746c60;margin-bottom:20px}
+   .paper .eyebrow,
+.catalogue-label {
+  color: rgba(244, 241, 232, .62);
+}
+
+.paper-intro {
+  color: var(--ink);
+}
+
+.paper-rule {
+  background: rgba(244, 241, 232, .22);
+}
+
+.close {
+  color: var(--ink);
+  border-color: rgba(244, 241, 232, .28);
+  border-radius: 12px;
+}
+
+.close:hover {
+  background: rgba(244, 241, 232, .08);
+}
 .entry{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1fr);gap:clamp(20px,4vw,46px);padding:26px 0 50px;border-bottom:1px solid rgba(37,34,31,.23)}
+  .entry {
+  background: #eee8dc;
+  color: #25221f;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid rgba(37, 34, 31, .15);
+}
 .preview{min-height:260px;background:#080b13;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .preview:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(5,6,10,.18),transparent 35%)}
 .preview img{display:block;width:100%;height:100%;min-height:260px;object-fit:cover;object-position:center}
@@ -74,7 +117,12 @@ h1{font:400 clamp(3.6rem,8vw,7rem)/1 var(--display);letter-spacing:-.05em;margin
 .status span{font:.65rem var(--mono);letter-spacing:.07em;padding:7px 9px;border:1px solid rgba(37,34,31,.35)}
 .launch{display:inline-block;color:#25221f;text-decoration:none;border-bottom:1px solid #25221f;padding:0 0 5px;font:500 .89rem var(--ui)}
 .launch:hover{color:#4F8F8A;border-color:#4F8F8A}
-.future{margin-top:44px;color:#746c60;font-size:.95rem;line-height:1.5}
+.future {
+  margin-top: 44px;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.5;
+}
 body.modal-open{overflow:hidden}
 @media(max-width:700px){main{padding-top:13vh}.field{height:490px}.galaxy.games{left:23%;top:28%}.galaxy.books{left:78%;top:38%}.galaxy.uniform{left:48%;top:76%}.galaxy{width:155px;height:155px}.entry{grid-template-columns:1fr}.preview{min-height:210px}.paper-intro{margin-bottom:36px}.paper{min-height:calc(100svh - 20px)}.overlay{padding:10px}}
 @media(prefers-reduced-motion:reduce){.galaxy,.galaxy .cloud{animation:none!important}.page-glow{display:none}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
