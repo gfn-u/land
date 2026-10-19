@@ -127,6 +127,7 @@ body.modal-open{overflow:hidden}
 @media(max-width:700px){main{padding-top:13vh}.field{height:490px}.galaxy.games{left:23%;top:28%}.galaxy.books{left:78%;top:38%}.galaxy.uniform{left:48%;top:76%}.galaxy{width:155px;height:155px}.entry{grid-template-columns:1fr}.preview{min-height:210px}.paper-intro{margin-bottom:36px}.paper{min-height:calc(100svh - 20px)}.overlay{padding:10px}}
 @media(prefers-reduced-motion:reduce){.galaxy,.galaxy .cloud{animation:none!important}.page-glow{display:none}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+  <link rel="stylesheet" href="components/scrapbook.css">
   <link rel="stylesheet" href="artifacts/spiral-engine/element.css">
 <link rel="stylesheet" href="field-guide.css">
 </head>
@@ -143,16 +144,30 @@ body.modal-open{overflow:hidden}
 <span class="cloud"></span><span class="cloud secondary"></span><span class="stars" aria-hidden="true"></span><span class="galaxy-name">UNIFORM</span><span class="state">COMING SOON</span></button>
 </div><p class="field-hint">SELECT A WORLD TO EXPLORE</p>
 </main>
-<div class="overlay" id="catalogue" role="dialog" aria-modal="true" aria-labelledby="catalogue-title" hidden>
+<div class="overlay" id="catalogue" role="dialog" aria-modal="true" aria-label="Games" hidden>
 <section class="paper">
-<div class="paper-header"><div><div class="eyebrow">GFNU / ACQUIRE GOODS / 01</div><h2 id="catalogue-title">Games</h2></div><button class="close" id="close-catalogue" aria-label="Close catalogue" type="button">×</button></div>
-<p class="paper-intro">Games to play, investigate, and occasionally misunderstand. Each has its own rules. What happens within them is partly up to you.</p>
-<div class="paper-rule"></div><div class="catalogue-label">AVAILABLE GOODS / GAMES</div>
+<div class="paper-header">
+  <button
+    class="close"
+    id="close-catalogue"
+    aria-label="Close Games"
+    type="button"
+  >×</button>
+</div>
 
-<div
-  class="game-artifact-slot"
-  data-artifact="spiral-engine"
-></div>
+<div class="games-space scrapbook">
+
+  <div
+    class="scrapbook-slot"
+    data-artifact="spiral-engine"
+    data-expand-direction="right"
+    style="
+      --artifact-column: 2 / span 7;
+      --artifact-expanded-width: 125%;
+    "
+  ></div>
+
+</div>
 <p class="future"> In development: A handcrafted, physical game set for future release. </p>
 </section></div>
 <script>
