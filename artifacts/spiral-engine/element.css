@@ -138,4 +138,12 @@
   .game-preview img {
     min-height: 210px;
   }
+ 
+/* TEMPORARY TEST — remove after checking */
+
+.game-artifact {
+  background: #d0a19a !important;
+  border: 5px solid #4f8f8a !important;
+  border-radius: 12px !important;
+}
 }
