@@ -93,4 +93,23 @@
   .scrapbook-slot > * {
     transition: none;
   }
+  /* Neighboring artifacts gently recede
+   when one artifact is expanded */
+
+.scrapbook-slot {
+  transition: opacity .5s ease;
+}
+
+.scrapbook:has(.scrapbook-slot.is-expanded)
+.scrapbook-slot:not(.is-expanded) {
+  opacity: .45;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrapbook-slot {
+    transition: none;
+  }
+}
 }
