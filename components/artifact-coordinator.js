@@ -1,39 +1,46 @@
+/*
+  GFnU ARTIFACT COORDINATOR
+
+  Coordinates expansion without requiring
+  artifacts to know about their neighbors.
+*/
+
 (function () {
   function createArtifactCoordinator(space) {
-    let activeArtifact = null;
+    let activeSlot = null;
 
     function close() {
-      if (!activeArtifact) return;
+      if (!activeSlot) return;
 
-      activeArtifact.classList.remove("expanded");
+      activeSlot.classList.remove("is-expanded");
 
-      const closeButton = activeArtifact.querySelector(
+      const closeButton = activeSlot.querySelector(
         "[data-artifact-close]"
       );
 
       if (closeButton) closeButton.hidden = true;
 
-      activeArtifact = null;
+      activeSlot = null;
     }
 
-    function open(artifact) {
-      if (activeArtifact === artifact) return;
+    function open(slot) {
+      if (activeSlot === slot) return;
 
       close();
 
-      artifact.classList.add("expanded");
+      slot.classList.add("is-expanded");
 
-      const closeButton = artifact.querySelector(
+      const closeButton = slot.querySelector(
         "[data-artifact-close]"
       );
 
       if (closeButton) closeButton.hidden = false;
 
-      activeArtifact = artifact;
+      activeSlot = slot;
     }
 
-    function register(artifact) {
-      artifact.addEventListener("click", (event) => {
+    function register(slot) {
+      slot.addEventListener("click", (event) => {
         if (event.target.closest("[data-artifact-close]")) {
           event.stopPropagation();
           close();
@@ -48,23 +55,14 @@
           return;
         }
 
-        open(artifact);
+        open(slot);
       });
     }
 
-    space.addEventListener("click", (event) => {
-      if (
-        activeArtifact &&
-        !activeArtifact.contains(event.target)
-      ) {
-        close();
-      }
-    });
-
     document.addEventListener("click", (event) => {
       if (
-        activeArtifact &&
-        !activeArtifact.contains(event.target)
+        activeSlot &&
+        !activeSlot.contains(event.target)
       ) {
         close();
       }
