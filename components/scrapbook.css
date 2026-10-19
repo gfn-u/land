@@ -1,0 +1,96 @@
+/*
+  GFnU SCRAPBOOK
+  Shared arrangement and interaction styles.
+
+  The scrapbook manages relationships between artifacts.
+  Individual artifacts retain their own visual identities.
+*/
+
+/* The hosting space */
+
+.scrapbook {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--scrapbook-gap, 32px);
+  align-items: start;
+  position: relative;
+}
+
+/* Each artifact occupies a slot in the collection */
+
+.scrapbook-slot {
+  position: relative;
+  min-width: 0;
+
+  grid-column: var(--artifact-column, auto);
+  margin-top: var(--artifact-offset-y, 0px);
+
+  z-index: 1;
+}
+
+/* The artifact itself */
+
+.scrapbook-slot > * {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  transition:
+    width .5s ease,
+    transform .5s ease;
+}
+
+/* An expanded artifact can overlap its neighbors */
+
+.scrapbook-slot.is-expanded {
+  z-index: 10;
+}
+
+.scrapbook-slot.is-expanded > * {
+  width: var(--artifact-expanded-width, 135%);
+}
+
+/* Expansion can grow in different directions */
+
+.scrapbook-slot[data-expand-direction="left"].is-expanded > * {
+  transform: translateX(
+    calc(100% - var(--artifact-expanded-width, 135%))
+  );
+}
+
+.scrapbook-slot[data-expand-direction="right"].is-expanded > * {
+  transform: translateX(0);
+}
+
+/* Shared close-button behavior */
+
+.scrapbook-slot [data-artifact-close][hidden] {
+  display: none;
+}
+
+/* Mobile: return to a single-column arrangement */
+
+@media (max-width: 700px) {
+  .scrapbook {
+    grid-template-columns: 1fr;
+    gap: var(--scrapbook-mobile-gap, 28px);
+  }
+
+  .scrapbook-slot {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .scrapbook-slot.is-expanded > * {
+    width: 100%;
+    transform: none;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrapbook-slot > * {
+    transition: none;
+  }
+}
