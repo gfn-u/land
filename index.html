@@ -367,13 +367,6 @@ background-image:
   margin: 40px 0;
 }
 
-.artifacts-intro {
-  max-width: 620px;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 100px;
-}
-
 .artifacts-collection {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -385,6 +378,7 @@ background-image:
   padding: 28px;
   border: 1px solid rgba(37, 34, 31, .22);
   min-height: 260px;
+  border-radius: var(--radius);
 }
 
 .artifacts-number {
@@ -404,8 +398,11 @@ background-image:
   font-size: 1rem;
   line-height: 1.5;
 }
-  .artifacts-item {
+ .artifacts-item {
   position: relative;
+}
+
+.volume-zero {
   cursor: pointer;
 }
 
@@ -517,14 +514,6 @@ background-image:
     <p class="artifacts-label">GFnU / ARTIFACTS</p>
 
     <h2>Curated Artifacts</h2>
-
-    <p class="artifacts-intro">
-      The Good for Nothing Universe keeps an evolving
-      collection of things made, tried, and developed together.
-      Some are ready to use. Others are still taking shape.
-      All are here to be encountered, put to work, questioned,
-      adapted, or developed further.
-    </p>
 
     <div class="artifacts-collection">
 
