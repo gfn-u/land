@@ -378,7 +378,60 @@
     width: 100%;
   }
 }
+          /* Migration: scrapbook slots control arrangement */
+.participation-space:not(.open) {
+  display: none;
+}
+.participation-space.open > .scrapbook-slot {
+  grid-column: var(--artifact-column, auto);
+  margin-top: var(--artifact-offset-y, 0px);
+  min-width: 0;
+}
+
+.participation-space .scrapbook-slot > .letter,
+.participation-space .scrapbook-slot > .contact-block {
+  grid-column: auto;
+  margin-top: 0;
+  width: 100%;
+}
+
+/* Expansion is controlled by the shared coordinator */
+
+.participation-space .scrapbook-slot.is-expanded {
+  z-index: 10;
+}
+
+.participation-space .scrapbook-slot.is-expanded > .letter,
+.participation-space .scrapbook-slot.is-expanded > .contact-block {
+  width: var(--artifact-expanded-width, 135%);
+}
+
+.participation-space
+.scrapbook-slot[data-expand-direction="left"].is-expanded
+> .contact-block {
+  transform: translateX(
+    calc(100% - var(--artifact-expanded-width, 135%))
+  );
+}
+
+/* Mobile layout */
+
+@media (max-width: 700px) {
+  .participation-space.open > .scrapbook-slot {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .participation-space .scrapbook-slot.is-expanded > .letter,
+  .participation-space .scrapbook-slot.is-expanded > .contact-block {
+    width: 100%;
+    transform: none;
+  }
+}
   </style>
+  <link rel="stylesheet" href="components/scrapbook.css">
+<link rel="stylesheet" href="artifacts/welcome-letter/element.css">
+<link rel="stylesheet" href="artifacts/contact/element.css">
   <link rel="stylesheet" href="field-guide.css">
 </head>
 <body>
@@ -398,134 +451,45 @@
 <button class="im-here">
   I'm here
 </button>
-<section class="participation-space">
-<div class="letter">
-  <button
-    class="letter-close"
-    type="button"
-    aria-label="Close expanded Welcome letter"
-    hidden
-  >×</button>
+<section class="participation-space scrapbook">
 
-  <h2>Welcome</h2>
-  <p>
-    Relevant information will be shared by GfN using the interweb,
-    for we lack sufficient numbers of carrier pigeons in today's world
-    and the distance between us has grown far too wide.
-  </p>
-  <p>
-    For now, we need an email address to contact you and invite you in.
-  </p>
-  <p>
-    This is not some managed newsletter. It is a list of email addresses
-    and names in our mailbox, so that at least digitally, we know where
-    to find one another. You may receive invitations, letters, small
-    artifacts of creative process or any number of things; we promise
-    to practice restraint in what is offered.
-  </p>
-  <p>
-    You are giving your email to a person. It is being stored in a small
-    server they made of their phone. Please understand that it is sometimes not available. 
-  </p>
-  <p>
-    Welcome to our creative process. Let us know where to find you:
-  </p>
-    <form class="welcome-form">
-  <label for="welcome-name">Your name</label>
-  <input
-    id="welcome-name"
-    type="text"
-    name="name"
-    placeholder="How should we address you?"
-    autocomplete="name"
-    disabled
-  >
+  <div
+    class="scrapbook-slot"
+    data-artifact="welcome-letter"
+    data-expand-direction="right"
+    style="
+      --artifact-column: 1 / span 6;
+      --artifact-expanded-width: 135%;
+    "
+  ></div>
 
-  <label for="welcome-email">Your email address</label>
-  <input
-    id="welcome-email"
-    type="email"
-    name="email"
-    placeholder="you@example.com"
-    autocomplete="email"
-    disabled
-  >
-
-  <button type="submit" disabled>
-    Join the not-a-mailing-list
-  </button>
-
-  <p class="welcome-form-status">
-    Registration unavailable. Please be patient with us while we await ignition (aka, we are still building the cell phone server).
-  </p>
-</form>
-  <p>
-    — GFN<br>
-    Head MacGyver at GfNU
-  </p>
- 
-  </div>
-
- <article class="contact-block">
-  <button class="contact-close" type="button"
-          aria-label="Close Contact us" hidden>×</button>
-
-  <span class="block-label">001 / CORRESPONDENCE</span>
-
-<h2>Contact us</h2>
-
-<p>
-  There are many ways to begin something together.
-  Here are a few possibilities of GfNUs services.
-</p>
-
-<details class="service">
-  <summary>Creative collaborations</summary>
-  <p>
-    Develop an idea, experiment, project, or
-    shared inquiry together.
-  </p>
-</details>
-
-<details class="service">
-  <summary>The GFnU Truck</summary>
-  <p>
-    Request event production services of the GfNU Truck & Management. 
-  </p>
-</details>
-
-<details class="service">
-  <summary>Retreats</summary>
-  <p>
-    Explore participation, hosting, or
-    co-creating a retreat. GfNU offers select, pre-fabricated retreat formats as well as collaboration in the development of formats. 
-  </p>
-</details>
-
-<p class="contact-invitation">
-  If you plan to use any of our production or development infrastructure, ie. retreats, The Truck, or creative collaboration, reach out to us directly.
-</p>
-
-<a class="contact-email"
-   href="mailto:littlemissgoodfornothing@gmail.com">
-  littlemissgoodfornothing@gmail.com ↗
-</a>
-  </article>
-
+  <div
+    class="scrapbook-slot"
+    data-artifact="contact"
+    data-expand-direction="left"
+    style="
+      --artifact-column: 8 / span 4;
+      --artifact-offset-y: 90px;
+      --artifact-expanded-width: calc(150% + 32px);
+    "
+  ></div>
 </section>
   <p class="out-of-reach">
   If you are out of reach, please reload.
 </p>
+  <script src="components/artifact-coordinator.js"></script>
+<script src="components/artifact-loader.js"></script>
   <script>
  const cosmos = document.querySelector(".cosmos");
  const imHere = document.querySelector(".im-here");
- const letter = document.querySelector(".letter");
 const participationSpace =
   document.querySelector(".participation-space");
 
 imHere.addEventListener("click", () => {
   participationSpace.classList.add("open");
-  letter.classList.add("open");
+
+  const letter = participationSpace.querySelector(".letter");
+  if (letter) letter.classList.add("open");
 
   document.querySelector(".out-of-reach").style.display = "none";
 });
@@ -565,62 +529,25 @@ function breathe() {
   requestAnimationFrame(breathe);
 }
 breathe();
-    const contactBlock = document.querySelector(".contact-block");
-const contactClose = document.querySelector(".contact-close");
+  document.addEventListener("artifacts:ready", (event) => {
+  const space = document.querySelector(".participation-space");
+  const coordinator = createArtifactCoordinator(space);
 
-function closeContact() {
-  contactBlock.classList.remove("expanded");
-  contactClose.hidden = true;
-}
+  space.querySelectorAll(".scrapbook-slot").forEach((slot) => {
+    if (slot.firstElementChild) {
+      coordinator.register(slot);
+    }
+  });
 
-contactBlock.addEventListener("click", () => {
-  if (!contactBlock.classList.contains("expanded")) {
-    closeWelcome();
-    contactBlock.classList.add("expanded");
-    contactClose.hidden = false;
+  // If the visitor entered before loading finished,
+  // reveal the Welcome Letter when it arrives.
+  if (space.classList.contains("open")) {
+    const letter = space.querySelector(".letter");
+    if (letter) letter.classList.add("open");
   }
-});
 
-contactClose.addEventListener("click", (event) => {
-  event.stopPropagation();
-  closeContact();
-});
-
-document.addEventListener("click", (event) => {
-  if (
-    contactBlock.classList.contains("expanded") &&
-    !contactBlock.contains(event.target)
-  ) {
-    closeContact();
-  }
-});
-    const welcomeLetter = document.querySelector(".letter");
-const letterClose = document.querySelector(".letter-close");
-
-function closeWelcome() {
-  welcomeLetter.classList.remove("expanded");
-  letterClose.hidden = true;
-}
-
-welcomeLetter.addEventListener("click", () => {
-  if (!welcomeLetter.classList.contains("expanded")) {
-    closeContact();
-    welcomeLetter.classList.add("expanded");
-    letterClose.hidden = false;
-  }
-});
-
-letterClose.addEventListener("click", (event) => {
-  event.stopPropagation();
-  closeWelcome();
-});
-
-document.addEventListener("click", (event) => {
-  if (
-    welcomeLetter.classList.contains("expanded") &&
-    !welcomeLetter.contains(event.target)
-  ) {
-    closeWelcome();
+  if (event.detail.loaded !== event.detail.total) {
+    console.warn("Some artifacts could not be loaded.");
   }
 });
   </script>
