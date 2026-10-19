@@ -107,7 +107,7 @@
   max-width: 100%;
   overflow-wrap: anywhere;
 
-  color: #345e59;
+ color: var(--gfn-teal, #4f8f8a);
   font-family: "IBM Plex Mono", monospace;
   font-size: .85rem;
 
