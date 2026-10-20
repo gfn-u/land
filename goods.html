@@ -68,10 +68,26 @@ h1{font:400 clamp(3.6rem,8vw,7rem)/1 var(--display);letter-spacing:-.05em;margin
 .paper::after {
   display: none;
 }
-  .paper-header{display:flex;justify-content:space-between;align-items:start;gap:18px}
+  .paper-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 18px;
+}
 .paper .eyebrow{color:#746c60}
 .paper h2{font:400 clamp(3.6rem,7vw,6.4rem)/1 var(--display);letter-spacing:-.04em;margin:22px 0 22px}
-.close{width:42px;height:42px;border:1px solid rgba(37,34,31,.28);background:transparent;color:#25221f;font-size:26px;cursor:pointer;flex-shrink:0;transition:background .25s}
+.close {
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  border: 1px solid rgba(37, 34, 31, .28);
+  background: transparent;
+  color: #25221f;
+  font-size: 26px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .25s;
+}
 .close:hover{background:rgba(37,34,31,.07)}
 .paper-intro{max-width:620px;font-size:1.15rem;line-height:1.65;margin:0 0 62px}
 .paper-rule{height:1px;background:rgba(37,34,31,.22);margin-bottom:30px}
@@ -149,7 +165,7 @@ body.modal-open{overflow:hidden}
 <section class="paper">
 <div class="paper-header">
   <button
-    class="close"
+    class="close gfn-close"
     id="close-catalogue"
     aria-label="Close Games"
     type="button"
@@ -168,9 +184,6 @@ body.modal-open{overflow:hidden}
     "
   ></div>
 
-</div>
-<p class="future"> In development: A handcrafted, physical game set for future release. </p>
-</section></div>
 <script>
 (function(){
 let seed=93471;
