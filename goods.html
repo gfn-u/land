@@ -173,7 +173,7 @@ body.modal-open{overflow:hidden}
     data-expand-direction="right"
     style="
       --artifact-column: 2 / span 10;
-      --artifact-expanded-width: 125%;
+      --artifact-expanded-width: 115%;
     "
   ></div>
 
@@ -222,13 +222,35 @@ document.querySelector('[data-galaxy="games"]')
   .addEventListener('click', e => open(e.currentTarget));
 
 modal.addEventListener('click', e => {
-  if (!e.target.closest('.game-artifact')) {
-    shut();
+  if (
+    e.target.closest('.game-artifact') ||
+    e.target.closest('[data-artifact-close]')
+  ) {
+    return;
   }
+
+  shut();
 });
 document.addEventListener('keydown',e=>{if(modal.hidden)return;if(e.key==='Escape')shut();if(e.key==='Tab'){const items=[...modal.querySelectorAll('button:not([disabled]),a[href]')];const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
 })();
 </script>
-  <script src="components/artifact-loader.js"></script>
-<script src="field-guide.js"></script>
+ <script src="components/artifact-coordinator.js"></script>
+<script src="components/artifact-loader.js"></script>
+
+<script>
+document.addEventListener('artifacts:ready', () => {
+  const space = document.querySelector('.games-space');
+  if (!space) return;
+
+  const coordinator = createArtifactCoordinator(space);
+
+  space.querySelectorAll('.scrapbook-slot').forEach(slot => {
+    coordinator.register(slot);
+  });
+});
+</script>
+
+<script src="field-guide.js">
+  
+</script>
 </body></html>
