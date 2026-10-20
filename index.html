@@ -77,8 +77,8 @@ main{
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:8vh 0
-  position: relative;
+padding: 8vh 0;
+position: relative;
 }
 .earthward {
   position: relative;
@@ -314,12 +314,6 @@ background-image:
   margin: 40px 0;
 }
 
-.artifacts-collection {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
 .artifacts-item {
   min-width: 0;
   padding: 28px;
@@ -461,47 +455,23 @@ background-image:
 
     <h2>Curated Artifacts</h2>
 
-    <div class="artifacts-collection">
+   <div class="artifacts-collection scrapbook">
 
-    <article class="artifacts-item volume-zero">
-  <button
-    class="artifact-close"
-    type="button"
-    aria-label="Close Volume 0"
-    hidden
-  >×</button>
+  <div
+    class="scrapbook-slot"
+    data-artifact="spiral-engine"
+    data-expand-direction="right"
+    style="
+      --artifact-column: 2 / span 10;
+      --artifact-expanded-width: 115%;
+    "
+  ></div>
 
-  <span class="artifacts-number">001</span>
-  <h3>Volume 0</h3>
-  <p>An inquiry into how inquiry proceeds.</p>
-
-  <div class="artifact-details" hidden>
-    <p>
-      A space for examining the process of inquiry itself:
-      how questions emerge, how exploration unfolds,
-      and what becomes possible along the way.
-    </p>
-  </div>
-</article>
-
-      <article class="artifacts-item">
-        <span class="artifacts-number">002</span>
-        <h3>Spiral Engine</h3>
-        <p>An interactive format for exploration.</p>
-      </article>
-
-      <article class="artifacts-item">
-        <span class="artifacts-number">003</span>
-        <h3>The GFnU Truck</h3>
-        <p>A mobile space for gatherings and experiments.</p>
-      </article>
-
-    </div>
+</div>
 
   </div>
 </section>
-    </div>
-  
+
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
   const transitionColors = [
@@ -554,38 +524,25 @@ for(let i=0;i<140;i++){
   star.style.opacity=Math.random()*.65+.15;
   cosmos.appendChild(star);
 }
-  const volumeZero = document.querySelector(".volume-zero");
-const artifactClose = volumeZero.querySelector(".artifact-close");
-const artifactDetails = volumeZero.querySelector(".artifact-details");
+</script>
 
-function closeVolumeZero() {
-  volumeZero.classList.remove("expanded");
-  artifactClose.hidden = true;
-  artifactDetails.hidden = true;
-}
+<script src="components/artifact-coordinator.js"></script>
+<script src="components/artifact-loader.js"></script>
 
-volumeZero.addEventListener("click", () => {
-  if (!volumeZero.classList.contains("expanded")) {
-    volumeZero.classList.add("expanded");
-    artifactClose.hidden = false;
-    artifactDetails.hidden = false;
-  }
-});
+<script>
+document.addEventListener('artifacts:ready', () => {
+  const space = document.querySelector('.artifacts-collection');
+  if (!space) return;
 
-artifactClose.addEventListener("click", (event) => {
-  event.stopPropagation();
-  closeVolumeZero();
-});
+  const coordinator = createArtifactCoordinator(space);
 
-document.addEventListener("click", (event) => {
-  if (
-    volumeZero.classList.contains("expanded") &&
-    !volumeZero.contains(event.target)
-  ) {
-    closeVolumeZero();
-  }
+  space.querySelectorAll('.scrapbook-slot').forEach(slot => {
+    coordinator.register(slot);
+ 
+  });
 });
 </script>
+
 <script src="field-guide.js"></script>
 </body>
 </html>
