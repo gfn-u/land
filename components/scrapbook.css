@@ -128,3 +128,51 @@
   --scrapbook-foreground-default: var(--gfn-paper);
   --scrapbook-border-default: var(--gfn-border-dark);
 }
+
+/*
+  SHARED ARTIFACT SURFACES
+
+  Applied to loaded elements, not their slots.
+  Only active in scrapbooks with an explicit mode.
+*/
+
+.scrapbook[data-scrapbook-mode]
+.scrapbook-slot > :is(.game-artifact, .contact-block) {
+  background-color: var(--scrapbook-surface);
+  background-image: var(--scrapbook-texture, none);
+  color: var(--scrapbook-foreground);
+  border-color: var(--scrapbook-border);
+}
+
+/* Default treatment for each environment */
+
+.scrapbook[data-scrapbook-mode="cream"] .scrapbook-slot {
+  --scrapbook-surface: var(--scrapbook-surface-default);
+  --scrapbook-foreground: var(--scrapbook-foreground-default);
+  --scrapbook-border: var(--scrapbook-border-default);
+}
+
+.scrapbook[data-scrapbook-mode="cosmic"] .scrapbook-slot {
+  --scrapbook-surface: var(--scrapbook-surface-default);
+  --scrapbook-foreground: var(--scrapbook-foreground-default);
+  --scrapbook-border: var(--scrapbook-border-default);
+}
+
+/* Internal details follow the selected foreground */
+
+.scrapbook[data-scrapbook-mode] .game-number,
+.scrapbook[data-scrapbook-mode] .block-label {
+  color: var(--scrapbook-foreground);
+  opacity: .7;
+}
+
+.scrapbook[data-scrapbook-mode] .game-status span {
+  border-color: var(--scrapbook-border);
+}
+
+.scrapbook[data-scrapbook-mode] .game-launch,
+.scrapbook[data-scrapbook-mode] .block-toggle,
+.scrapbook[data-scrapbook-mode] .contact-email {
+  color: var(--scrapbook-foreground);
+  border-color: var(--scrapbook-border);
+}
