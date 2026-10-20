@@ -161,16 +161,9 @@ body.modal-open{overflow:hidden}
 <span class="cloud"></span><span class="cloud secondary"></span><span class="stars" aria-hidden="true"></span><span class="galaxy-name">UNIFORM</span><span class="state">COMING SOON</span></button>
 </div><p class="field-hint">SELECT A WORLD TO EXPLORE</p>
 </main>
-<div class="overlay" id="catalogue" role="dialog" aria-modal="true" aria-label="Games" hidden>
+<div class="overlay" id="catalogue" role="dialog" aria-modal="true" aria-label="Games" tabindex="-1" hidden>
 <section class="paper">
-<div class="paper-header">
-  <button
-    class="close gfn-close"
-    id="close-catalogue"
-    aria-label="Close Games"
-    type="button"
-  >×</button>
-</div>
+
 
 <div class="games-space scrapbook">
 
@@ -179,11 +172,14 @@ body.modal-open{overflow:hidden}
     data-artifact="spiral-engine"
     data-expand-direction="right"
     style="
-      --artifact-column: 2 / span 7;
+      --artifact-column: 2 / span 10;
       --artifact-expanded-width: 125%;
     "
   ></div>
 
+</div> 
+</section> 
+</div> 
 <script>
 (function(){
 let seed=93471;
@@ -205,12 +201,31 @@ const container=g.querySelector('.stars');const n=gi===0?180:140;
 for(let i=0;i<n;i++){const a=rnd()*Math.PI*2;const r=Math.sqrt(-2*Math.log(Math.max(.00001,1-rnd())));const x=50+Math.cos(a)*r*15;const y=50+Math.sin(a)*r*10+(x-50)*.18;if(x<2||x>98||y<3||y>97)continue;
 const s=document.createElement('span');s.className='point';const size=rnd()<.94?.45+rnd()*1.15:1.8+rnd()*1.5;s.style.cssText=`left:${x}%;top:${y}%;width:${size}px;height:${size}px;opacity:${.12+rnd()*.72};box-shadow:0 0 ${rnd()*7}px rgba(244,241,232,.4)`;container.appendChild(s)}
 });
-const modal=document.getElementById('catalogue'),close=document.getElementById('close-catalogue');let trigger=null;
-function open(g){trigger=g;modal.hidden=false;document.body.classList.add('modal-open');modal.scrollTop=0;close.focus()}
-function shut(){modal.hidden=true;document.body.classList.remove('modal-open');if(trigger)trigger.focus()}
-document.querySelector('[data-galaxy="games"]').addEventListener('click',e=>open(e.currentTarget));
-close.addEventListener('click',shut);
-modal.addEventListener('click',e=>{if(e.target===modal)shut()});
+const modal = document.getElementById('catalogue');
+let trigger = null;
+
+function open(g) {
+  trigger = g;
+  modal.hidden = false;
+  document.body.classList.add('modal-open');
+  modal.scrollTop = 0;
+  modal.focus();
+}
+
+function shut() {
+  modal.hidden = true;
+  document.body.classList.remove('modal-open');
+  if (trigger) trigger.focus();
+}
+
+document.querySelector('[data-galaxy="games"]')
+  .addEventListener('click', e => open(e.currentTarget));
+
+modal.addEventListener('click', e => {
+  if (!e.target.closest('.game-artifact')) {
+    shut();
+  }
+});
 document.addEventListener('keydown',e=>{if(modal.hidden)return;if(e.key==='Escape')shut();if(e.key==='Tab'){const items=[...modal.querySelectorAll('button:not([disabled]),a[href]')];const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
 })();
 </script>
