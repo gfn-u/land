@@ -101,6 +101,14 @@ body[data-guide-page="landing"] .orientation-mark.is-visible {
 
 /* Compass */
 
+.field-guide-compass {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  gap: 48px 16px;
+  text-align: center;
+}
 
 .field-guide-compass a {
   --gfn-link-rest: rgba(244, 241, 232, .62);
@@ -143,16 +151,6 @@ body[data-guide-page="landing"] .orientation-mark.is-visible {
   text-transform: uppercase;
 
   color: var(--muted, rgba(244, 241, 232, .62));
-}
-
-.field-guide-compass a {
-  color: var(--ink, #f4f1e8);
-
-  font-family: var(--font-display, "EB Garamond", serif);
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-
-  text-decoration: none;
-  transition: opacity .3s ease;
 }
 
 .field-guide-compass a:hover,
