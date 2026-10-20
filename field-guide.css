@@ -108,6 +108,7 @@ body[data-guide-page="landing"] .orientation-mark.is-visible {
   align-items: center;
   gap: 48px 16px;
   text-align: center;
+   opacity: .72;
 }
 
 .field-guide-heading {
@@ -119,6 +120,7 @@ body[data-guide-page="landing"] .orientation-mark.is-visible {
   align-items: center;
   justify-content: center;
   gap: 12px;
+  opacity: .38;
 }
 
 .field-guide-symbol {
@@ -149,8 +151,9 @@ body[data-guide-page="landing"] .orientation-mark.is-visible {
   transition: opacity .3s ease;
 }
 
-.field-guide-compass a:hover {
-  opacity: .6;
+.field-guide-compass a:hover,
+.field-guide-compass a:focus-visible {
+  opacity: 1;
 }
 
 .field-guide-compass a span {
