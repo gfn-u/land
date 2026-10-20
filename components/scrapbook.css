@@ -117,16 +117,10 @@
   Surface treatments can respond to it.
 */
 
-.scrapbook[data-scrapbook-mode="cosmic"] .scrapbook-slot:not([data-surface]) {
-  --scrapbook-surface-default: var(--gfn-cream);
-  --scrapbook-foreground-default: var(--gfn-ink);
-  --scrapbook-border-default: var(--gfn-border-light);
-}
-
-.scrapbook[data-scrapbook-mode="cream"] .scrapbook-slot:not([data-surface]) {
-  --scrapbook-surface-default: var(--gfn-surface-dark);
-  --scrapbook-foreground-default: var(--gfn-paper);
-  --scrapbook-border-default: var(--gfn-border-dark);
+.scrapbook[data-scrapbook-mode] .scrapbook-slot:not([data-surface]) {
+  --scrapbook-surface: var(--scrapbook-surface-default);
+  --scrapbook-foreground: var(--scrapbook-foreground-default);
+  --scrapbook-border: var(--scrapbook-border-default);
 }
 
 /*
@@ -136,8 +130,8 @@
   Only active in scrapbooks with an explicit mode.
 */
 
-.scrapbook[data-scrapbook-mode]
-.scrapbook-slot > :is(.game-artifact, .contact-block) {
+.scrapbook[data-scrapbook-mode] .scrapbook-slot
+  > :is(.game-artifact, .contact-block) {
   background-color: var(--scrapbook-surface);
   background-image: var(--scrapbook-texture, none);
   color: var(--scrapbook-foreground);
