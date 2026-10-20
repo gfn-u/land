@@ -100,9 +100,8 @@
   transition: opacity .5s ease;
 }
 
-.scrapbook:has(.scrapbook-slot.is-expanded)
-.scrapbook-slot:not(.is-expanded) {
-  opacity: 1;
+.scrapbook:has(> .scrapbook-slot.is-expanded)
+> .scrapbook-slot:not(.is-expanded) {
   filter: brightness(.4);
 }
 
