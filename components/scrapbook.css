@@ -87,17 +87,10 @@
   }
 }
 
-/* Respect reduced-motion preferences */
+/* Darken neighboring artifacts when one is selected */
 
-@media (prefers-reduced-motion: reduce) {
-  .scrapbook-slot > * {
-    transition: none;
-  }
-  /* Neighboring artifacts gently recede
-   when one artifact is expanded */
-
-.scrapbook-slot {
-  transition: opacity .5s ease;
+.scrapbook > .scrapbook-slot {
+  transition: filter .5s ease;
 }
 
 .scrapbook:has(> .scrapbook-slot.is-expanded)
@@ -108,24 +101,11 @@
 /* Respect reduced-motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
-  .scrapbook-slot {
+  .scrapbook-slot > * {
     transition: none;
   }
-}
-  /* Relational fading across every scrapbook */
 
-.scrapbook > .scrapbook-slot {
-  transition: opacity 0.5s ease;
-}
-
-.scrapbook:has(> .scrapbook-slot.is-expanded)
-> .scrapbook-slot:not(.is-expanded) {
-  opacity: 0.45;
-}
-
-@media (prefers-reduced-motion: reduce) {
   .scrapbook > .scrapbook-slot {
     transition: none;
   }
-}
 }
