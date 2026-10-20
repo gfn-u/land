@@ -1,4 +1,11 @@
- width: 100%;
+/* Spiral Engine artifact surface */
+
+.game-artifact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+
+  width: 100%;
   min-width: 0;
   padding: 28px;
 
@@ -10,7 +17,6 @@
 
   box-sizing: border-box;
 }
-
 /* Game preview */
 
 .game-preview {
@@ -126,7 +132,7 @@
   color: #4f8f8a;
   border-color: #4f8f8a;
 }
-
+ 
 /* Adapt the artifact to narrower spaces */
 
 @media (max-width: 700px) {
@@ -138,12 +144,4 @@
   .game-preview img {
     min-height: 210px;
   }
- 
-/* TEMPORARY TEST — remove after checking */
-
-.game-artifact {
-  background: #d0a19a !important;
-  border: 5px solid #4f8f8a !important;
-  border-radius: 12px !important;
-}
 }
