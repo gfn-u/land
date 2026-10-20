@@ -160,6 +160,41 @@
     transition: none;
   }
 }
+/* Shared artifact expand control */
+
+.artifact-expand {
+
+  position: absolute;
+
+  top: 16px;
+
+  right: 20px;
+
+  z-index: 2;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  font-family: var(--gfn-font-ui);
+
+  font-size: 1.35rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+}
+
+.artifact-expand[hidden] {
+
+  display: none;
+
+}
 /* Shared brightening for interactive text */
 
 .gfn-link-brighten {
