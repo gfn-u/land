@@ -159,3 +159,20 @@
     transition: none;
   }
 }
+/* Shared brightening for interactive text */
+
+.gfn-link-brighten {
+  color: var(--gfn-link-rest, rgba(244, 241, 232, .62));
+  transition: color 1.5s ease;
+}
+
+.gfn-link-brighten:hover,
+.gfn-link-brighten:focus-visible {
+  color: var(--gfn-link-bright, #f4f1e8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gfn-link-brighten {
+    transition: none;
+  }
+}
