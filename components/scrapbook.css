@@ -176,3 +176,148 @@
   color: var(--scrapbook-foreground);
   border-color: var(--scrapbook-border);
 }
+
+/*
+  SCRAPBOOK SURFACE PALETTE
+
+  The host selects a treatment using data-surface.
+  Treatments affect the loaded element through
+  the shared scrapbook surface variables.
+*/
+
+/* Archival ink */
+
+.scrapbook-slot[data-surface="ink"] {
+ --scrapbook-surface: var(--gfn-surface-dark);
+--scrapbook-foreground: var(--gfn-paper);
+--scrapbook-border: var(--gfn-fog);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      0deg,
+      rgba(244, 241, 232, .035) 0px,
+      rgba(244, 241, 232, .035) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+/* Weathered teal */
+
+.scrapbook-slot[data-surface="teal"] {
+ --scrapbook-surface: var(--gfn-paper);
+--scrapbook-foreground: var(--gfn-ink);
+--scrapbook-border: var(--gfn-teal);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      90deg,
+      rgba(5, 6, 10, .035) 0px,
+      rgba(5, 6, 10, .035) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/* Lichen */
+
+.scrapbook-slot[data-surface="lichen"] {
+--scrapbook-surface: var(--gfn-paper);
+--scrapbook-foreground: var(--gfn-ink);
+--scrapbook-border: var(--gfn-lichen);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      0deg,
+      rgba(5, 6, 10, .045) 0px,
+      rgba(5, 6, 10, .045) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+}
+
+/* Terracotta */
+
+.scrapbook-slot[data-surface="terracotta"] {
+--scrapbook-surface: var(--gfn-terracotta);
+--scrapbook-foreground: var(--gfn-cosmos);
+--scrapbook-border: var(--gfn-paper);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      90deg,
+      rgba(244, 241, 232, .07) 0px,
+      rgba(244, 241, 232, .07) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+/* Open sky */
+
+.scrapbook-slot[data-surface="sky"] {
+--scrapbook-surface: var(--gfn-cream);
+--scrapbook-foreground: var(--gfn-ink);
+--scrapbook-border: var(--gfn-sky);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      0deg,
+      rgba(5, 6, 10, .035) 0px,
+      rgba(5, 6, 10, .035) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/* Pink salt */
+
+.scrapbook-slot[data-surface="salt"] {
+--scrapbook-surface: var(--gfn-salt);
+--scrapbook-foreground: var(--gfn-ink);
+--scrapbook-border: var(--gfn-terracotta);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      90deg,
+      rgba(91, 68, 47, .045) 0px,
+      rgba(91, 68, 47, .045) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/* Purple */
+
+.scrapbook-slot[data-surface="purple"] {
+--scrapbook-surface: var(--gfn-paper);
+--scrapbook-foreground: var(--gfn-ink);
+--scrapbook-border: var(--gfn-purple);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      0deg,
+      rgba(244, 241, 232, .04) 0px,
+      rgba(244, 241, 232, .04) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+
+/* Fog — provisional brand color */
+
+.scrapbook-slot[data-surface="fog"] {
+  --scrapbook-surface: var(--gfn-fog);
+  --scrapbook-foreground: var(--gfn-cosmos);
+  --scrapbook-border: var(--gfn-surface-dark);
+
+  --scrapbook-texture:
+    repeating-linear-gradient(
+      0deg,
+      rgba(5, 6, 10, .025) 0px,
+      rgba(5, 6, 10, .025) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+}
