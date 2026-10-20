@@ -117,13 +117,13 @@
   Surface treatments can respond to it.
 */
 
-.scrapbook[data-scrapbook-mode="cosmic"] {
+.scrapbook[data-scrapbook-mode="cosmic"] .scrapbook-slot:not([data-surface]) {
   --scrapbook-surface-default: var(--gfn-cream);
   --scrapbook-foreground-default: var(--gfn-ink);
   --scrapbook-border-default: var(--gfn-border-light);
 }
 
-.scrapbook[data-scrapbook-mode="cream"] {
+.scrapbook[data-scrapbook-mode="cream"] .scrapbook-slot:not([data-surface]) {
   --scrapbook-surface-default: var(--gfn-surface-dark);
   --scrapbook-foreground-default: var(--gfn-paper);
   --scrapbook-border-default: var(--gfn-border-dark);
