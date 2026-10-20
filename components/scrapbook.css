@@ -102,7 +102,8 @@
 
 .scrapbook:has(.scrapbook-slot.is-expanded)
 .scrapbook-slot:not(.is-expanded) {
-  opacity: .45;
+  opacity: 1;
+  filter: brightness(.4);
 }
 
 /* Respect reduced-motion preferences */
