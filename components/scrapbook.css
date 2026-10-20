@@ -138,19 +138,6 @@
   border-color: var(--scrapbook-border, var(--gfn-border-light));
 }
 
-/* Default treatment for each environment */
-
-.scrapbook[data-scrapbook-mode="cream"] .scrapbook-slot {
-  --scrapbook-surface: var(--scrapbook-surface-default);
-  --scrapbook-foreground: var(--scrapbook-foreground-default);
-  --scrapbook-border: var(--scrapbook-border-default);
-}
-
-.scrapbook[data-scrapbook-mode="cosmic"] .scrapbook-slot {
-  --scrapbook-surface: var(--scrapbook-surface-default);
-  --scrapbook-foreground: var(--scrapbook-foreground-default);
-  --scrapbook-border: var(--scrapbook-border-default);
-}
 
 /* Internal details follow the selected foreground */
 
