@@ -10,54 +10,117 @@
     let activeSlot = null;
 
     function close() {
-      if (!activeSlot) return;
 
-      activeSlot.classList.remove("is-expanded");
+  if (!activeSlot) return;
 
-      const closeButton = activeSlot.querySelector(
-        "[data-artifact-close]"
-      );
+  activeSlot.classList.remove("is-expanded");
 
-      if (closeButton) closeButton.hidden = true;
+  const closeButton = activeSlot.querySelector(
 
-      activeSlot = null;
-    }
+    "[data-artifact-close]"
 
+  );
+
+  const expandButton = activeSlot.querySelector(
+
+    "[data-artifact-expand]"
+
+  );
+
+  const expandedContent = activeSlot.querySelector(
+
+    "[data-artifact-expanded]"
+
+  );
+
+  if (closeButton) closeButton.hidden = true;
+
+  if (expandButton) expandButton.hidden = false;
+
+  if (expandedContent) expandedContent.hidden = true;
+
+  activeSlot = null;
+
+}
     function open(slot) {
-      if (activeSlot === slot) return;
+
+  if (activeSlot === slot) return;
+
+  close();
+
+  slot.classList.add("is-expanded");
+
+  const closeButton = slot.querySelector(
+
+    "[data-artifact-close]"
+
+  );
+
+  const expandButton = slot.querySelector(
+
+    "[data-artifact-expand]"
+
+  );
+
+  const expandedContent = slot.querySelector(
+
+    "[data-artifact-expanded]"
+
+  );
+
+  if (closeButton) closeButton.hidden = false;
+
+  if (expandButton) expandButton.hidden = true;
+
+  if (expandedContent) expandedContent.hidden = false;
+
+  activeSlot = slot;
+
+}
+
+    function register(slot) {
+
+  slot.addEventListener("click", (event) => {
+
+    if (event.target.closest("[data-artifact-close]")) {
+
+      event.stopPropagation();
 
       close();
 
-      slot.classList.add("is-expanded");
+      return;
 
-      const closeButton = slot.querySelector(
-        "[data-artifact-close]"
-      );
-
-      if (closeButton) closeButton.hidden = false;
-
-      activeSlot = slot;
     }
 
-    function register(slot) {
-      slot.addEventListener("click", (event) => {
-        if (event.target.closest("[data-artifact-close]")) {
-          event.stopPropagation();
-          close();
-          return;
-        }
+    if (event.target.closest("[data-artifact-expand]")) {
 
-        if (
-          event.target.closest(
-            "a, input, textarea, select, summary, button"
-          )
-        ) {
-          return;
-        }
+      event.stopPropagation();
 
-        open(slot);
-      });
+      open(slot);
+
+      return;
+
     }
+
+    if (
+
+      event.target.closest(
+
+        "a, input, textarea, select, summary, button"
+
+      )
+
+    ) {
+
+      return;
+
+    }
+
+    open(slot);
+
+  });
+
+}
 
     document.addEventListener("click", (event) => {
       if (
