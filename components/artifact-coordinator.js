@@ -116,7 +116,15 @@
 
     }
 
-    open(slot);
+   if (activeSlot === slot) {
+
+  close();
+
+} else {
+
+  open(slot);
+
+}
 
   });
 
