@@ -132,10 +132,10 @@
 
 .scrapbook[data-scrapbook-mode] .scrapbook-slot
   > :is(.game-artifact, .contact-block) {
-  background-color: var(--scrapbook-surface);
+  background-color: var(--scrapbook-surface, var(--gfn-paper));
   background-image: var(--scrapbook-texture, none);
-  color: var(--scrapbook-foreground);
-  border-color: var(--scrapbook-border);
+  color: var(--scrapbook-foreground, var(--gfn-ink));
+  border-color: var(--scrapbook-border, var(--gfn-border-light));
 }
 
 /* Default treatment for each environment */
