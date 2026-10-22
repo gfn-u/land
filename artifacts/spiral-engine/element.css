@@ -145,3 +145,36 @@
     min-height: 210px;
   }
 }
+/* Expanded game framing */
+
+.game-expanded-content {
+  grid-column: 1 / -1;
+  width: 100%;
+
+  margin-top: 12px;
+  padding-top: 28px;
+
+  border-top: 1px solid currentColor;
+}
+
+.game-expanded-label {
+  margin-bottom: 18px;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .67rem;
+  letter-spacing: .1em;
+  opacity: .7;
+}
+
+.game-expanded-content p {
+  max-width: none;
+  margin: 0 0 18px;
+
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.04rem;
+  line-height: 1.62;
+}
+
+.game-expanded-content p:last-child {
+  margin-bottom: 0;
+}
