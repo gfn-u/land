@@ -70,37 +70,7 @@
   line-height: 1.5;
 }
 
-/* Existing service disclosures */
-
-.service {
-  border-top: 1px solid rgba(37, 34, 31, .2);
-  padding: 15px 0;
-}
-
-.service summary {
-  cursor: pointer;
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #25221f;
-}
-
-.service summary:hover {
-  color: #4f8f8a;
-}
-
-.service p {
-  margin: 16px 0 4px;
-  line-height: 1.6;
-}
-
-/* Invitation and email */
-
-.contact-invitation {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(37, 34, 31, .2);
-}
+/* Correspondance email */
 
 .contact-email {
   display: inline-block;
@@ -124,7 +94,7 @@
 
   border: none;
   background: transparent;
-  color: #25221f;
+  color: inherit;
 
   font-family: "Inter", sans-serif;
   font-size: 1.6rem;
@@ -133,4 +103,66 @@
 
 .contact-close[hidden] {
   display: none;
+}
+
+/* Contact services expansion */
+
+.contact-services-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+
+  margin: 24px 0;
+  padding: 14px 0;
+
+  border: 0;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+
+  font-family: var(--gfn-font-mono, "IBM Plex Mono", monospace);
+  font-size: .78rem;
+  line-height: 1.5;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.contact-services-toggle span {
+  flex: none;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.contact-services-toggle[hidden] {
+  display: none;
+}
+
+.contact-services-expanded {
+  margin: 24px 0;
+}
+
+.contact-services-expanded[hidden] {
+  display: none;
+}
+
+.contact-services-expanded p {
+  margin: 0 0 18px;
+}
+
+.contact-services-expanded ul {
+  margin: 0 0 24px;
+  padding-left: 20px;
+}
+
+.contact-services-expanded li {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.contact-services-expanded li:last-child {
+  margin-bottom: 0;
 }
