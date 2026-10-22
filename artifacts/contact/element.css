@@ -109,32 +109,33 @@
 
 .contact-services-toggle {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: 16px;
   width: 100%;
 
   margin: 24px 0;
-  padding: 14px 0;
+  padding: 0;
 
-  border: 0;
-  border-top: 1px solid currentColor;
-  border-bottom: 1px solid currentColor;
+  border: none;
+  border-radius: 0;
   background: transparent;
   color: inherit;
 
-  font-family: var(--gfn-font-mono, "IBM Plex Mono", monospace);
-  font-size: .78rem;
+  font-family: var(--gfn-font-body, "Source Sans 3", sans-serif);
+  font-size: inherit;
+  font-weight: inherit;
   line-height: 1.5;
   text-align: left;
 
   cursor: pointer;
 }
-
 .contact-services-toggle span {
   flex: none;
-  font-size: 1.25rem;
-  line-height: 1;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
 }
 
 .contact-services-toggle[hidden] {
