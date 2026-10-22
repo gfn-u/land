@@ -81,7 +81,17 @@ padding: 8vh 0;
 }
 .earthward {
   position: relative;
-}  
+  isolation: isolate;
+}
+
+.ground {
+  position: relative;
+  z-index: 2;
+}
+
+.artifacts {
+  z-index: 1;
+}
 .descent {
   height: 85vh;
   background:
