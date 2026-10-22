@@ -341,20 +341,29 @@ background-image:
 .ground h2.intro-mono {
   font-family: var(--gfn-font-mono, "IBM Plex Mono", monospace);
 }
-  /* Environmental artifact experiment */
+* Environmental fragment: arching vine */
 
 .environment-test {
-  background: var(--gfn-cream, #eee8dc);
-  padding: 60px 0;
-  text-align: center;
+  position: relative;
+  z-index: 2;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
 }
 
 .environment-test-image {
   display: block;
-  width: min(70vw, 650px);
-  max-width: 100%;
+  position: absolute;
+
+  width: min(85vw, 1000px);
+  max-width: none;
   height: auto;
-  margin: 0 auto;
+
+  top: -180px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  pointer-events: none;
 }
   
 </style>
@@ -408,7 +417,14 @@ background-image:
   <p>
     Hint: We, the I which includes You, are the answer.  
   </p>
-  
+<!-- Environmental artifact -->
+<div class="environment-test">
+  <img
+    src="assets/environment/Arching%20Vine%20and%20Hovering%20Moth-2.png"
+    alt="Arching vine with a hovering moth"
+    class="environment-test-image"
+  >
+</div>
 </div>
 </section>
 <section class="artifacts" id="artifacts">
@@ -519,13 +535,6 @@ document.addEventListener('artifacts:ready', () => {
 });
 </script>
 <script src="field-guide.js"></script>
-    <!-- Environmental artifact experiment -->
-<div class="environment-test">
-  <img
-    src="assets/environment/Arching%20Vine%20and%20Hovering%20Moth-2.png"
-    alt="Arching vine with a hovering moth"
-    class="environment-test-image"
-  >
-</div>
+
 </body>
 </html>
