@@ -377,23 +377,7 @@ background-image:
   pointer-events: none;
 }
 
-   position: relative;
-  isolation: isolate;
-  width: 100%;
-  min-height: clamp(320px, 48vw, 740px);
-  overflow: hidden;
-
-  display: flex;
-  align-items: flex-end;
-
-  background: linear-gradient(
-    to bottom,
-    #e4d8c7 0%,
-    #d8d5bf 38%,
-    #aeb7a0 100%
-  );
 }
-
 .living-landscape {
   position: relative;
   isolation: isolate;
@@ -404,13 +388,21 @@ background-image:
   display: flex;
   align-items: flex-end;
 
-  background: linear-gradient(
-    to bottom,
-    #e4d8c7 0%,
-    #ded8c9 25%,
-    #cdd0bc 55%,
-    #aeb7a0 100%
-  );
+  background: #e4d8c7;
+  background-image: none;
+}
+
+  .living-landscape-image {
+  display: block;
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: auto;
+  max-width: none;
+
+  object-fit: contain;
+  object-position: bottom center;
 }
   
 </style>
@@ -525,7 +517,7 @@ background-image:
     decoding="async"
   >
 </section>
-
+</div> 
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
   const transitionColors = [
