@@ -376,6 +376,42 @@ background-image:
   transform: translateX(-50%);
   pointer-events: none;
 }
+
+   position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: clamp(320px, 48vw, 740px);
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-end;
+
+  background: linear-gradient(
+    to bottom,
+    #e4d8c7 0%,
+    #d8d5bf 38%,
+    #aeb7a0 100%
+  );
+}
+
+.living-landscape {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: clamp(320px, 48vw, 740px);
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-end;
+
+  background: linear-gradient(
+    to bottom,
+    #e4d8c7 0%,
+    #ded8c9 25%,
+    #cdd0bc 55%,
+    #aeb7a0 100%
+  );
+}
   
 </style>
   
@@ -480,6 +516,16 @@ background-image:
   </div>
 </section>
 
+    <section class="living-landscape" aria-label="Living landscape">
+  <img
+    src="assets/environment/Wildflower-Headed%20Figure%20by%20the%20Water.png"
+    alt="A figure with wildflowers growing from their head, seated among rocks and reeds beside the water."
+    class="living-landscape-image"
+    loading="lazy"
+    decoding="async"
+  >
+</section>
+
 <script>
 const root=document.documentElement;let tx=50,ty=45,x=50,y=45;
   const transitionColors = [
@@ -549,6 +595,7 @@ document.addEventListener('artifacts:ready', () => {
  
   });
 });
+  
 </script>
 <script src="field-guide.js"></script>
 
