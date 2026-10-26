@@ -407,7 +407,7 @@ background-image:
 .living-landscape-image {
   display: block;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   width: 100%;
   max-width: 100%;
@@ -427,6 +427,26 @@ background-image:
   height: auto;
 
   pointer-events: none;
+}
+
+  .landscape-osprey {
+  position: absolute;
+  z-index: 1;
+
+  left: 7%;
+  bottom: 0;
+
+  width: clamp(160px, 23vw, 350px);
+  height: auto;
+
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .landscape-osprey {
+    left: 2%;
+    width: 34%;
+  }
 }
 
 @media (max-width: 700px) {
@@ -539,7 +559,18 @@ background-image:
   </div>
 </section>
 
-    <section class="living-landscape" aria-label="Living landscape">
+   <section class="living-landscape" aria-label="Living landscape">
+
+  <!-- Osprey: background environmental layer -->
+  <img
+    src="assets/environment/osprey_original_photo_cutout_v2.png"
+    alt="An osprey perched on a weathered wooden post"
+    class="landscape-osprey"
+    loading="lazy"
+    decoding="async"
+  >
+
+  <!-- Wildflower landscape: foreground -->
   <img
     src="assets/environment/Wildflower-Headed%20Figure%20by%20the%20Water.png"
     alt="A figure with wildflowers growing from their head, seated among rocks and reeds beside the water."
@@ -547,13 +578,8 @@ background-image:
     loading="lazy"
     decoding="async"
   >
-      <img
-  src="assets/environment/osprey_post_original_photo_cutout_v1.png"
-  alt="An osprey perched on a weathered wooden post"
-  class="landscape-osprey"
-  loading="lazy"
-  decoding="async"
->
+
+</section>
 </section>
 </div> 
 <script>
