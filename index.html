@@ -429,17 +429,24 @@ background-image:
   pointer-events: none;
 }
 
-  .landscape-osprey {
+ .landscape-osprey {
   position: absolute;
   z-index: 1;
 
-  left: 7%;
+  left: 2%;
   bottom: 0;
 
-  width: clamp(160px, 23vw, 350px);
+  width: clamp(135px, 19vw, 290px);
   height: auto;
 
   pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .landscape-osprey {
+    left: -1%;
+    width: 29%;
+  }
 }
 
 @media (max-width: 700px) {
