@@ -416,6 +416,25 @@ background-image:
   object-fit: contain;
   object-position: bottom center;
 }
+  .landscape-osprey {
+  position: absolute;
+  z-index: 2;
+
+  bottom: 0;
+  left: 7%;
+
+  width: clamp(180px, 24vw, 370px);
+  height: auto;
+
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .landscape-osprey {
+    left: 0;
+    width: 38%;
+  }
+}
   
 </style>
   
@@ -528,6 +547,13 @@ background-image:
     loading="lazy"
     decoding="async"
   >
+      <img
+  src="assets/environment/osprey_post_original_photo_cutout_v1.png"
+  alt="An osprey perched on a weathered wooden post"
+  class="landscape-osprey"
+  loading="lazy"
+  decoding="async"
+>
 </section>
 </div> 
 <script>
